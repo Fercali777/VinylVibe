@@ -4,27 +4,30 @@ import axios from 'axios';
 const App: React.FC = () => {
   const [discos, setDiscos] = useState([]);
   const [generos, setGeneros] = useState<string[]>([]);
-  const [selectedGenre, setSelectedGenre] = useState<string>('Rock');
+  const [selectedGenre, setSelectedGenre] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const token = 'qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP'; // Reemplaza con tu token de Discogs
 
-  // Obtener géneros desde los resultados de búsqueda
+  // Obtener géneros desde varios discos
   useEffect(() => {
     const fetchGeneros = async () => {
       try {
-        // Hacemos una búsqueda de discos para extraer géneros
-        const response = await axios.get(`/discogs/database/search?type=release&per_page=1&page=1&q=`, {
-          headers: { Authorization: `Discogs token=${token}` },
-        });
+        const response = await axios.get(
+          `https://api.discogs.com/database/search?type=release&per_page=100&page=1&q=`,
+          { headers: { Authorization: `Discogs token=${token}` } }
+        );
+
         const genres = new Set<string>();
-        // Extraemos géneros de los discos obtenidos
+
+        // Extraemos géneros de múltiples discos
         response.data.results.forEach((result: any) => {
-          result.genre?.forEach((genre: string) => {
-            genres.add(genre); // Añadimos los géneros encontrados
-          });
+          if (result.genre) {
+            result.genre.forEach((genre: string) => genres.add(genre));
+          }
         });
-        setGeneros(Array.from(genres)); // Convertimos el Set a un array
+
+        setGeneros(Array.from(genres)); // Convertimos el Set a un array único
       } catch (error) {
         console.error('Error al obtener géneros:', error);
       }
@@ -38,10 +41,8 @@ const App: React.FC = () => {
     const fetchDiscos = async () => {
       try {
         const response = await axios.get(
-          `/discogs/database/search?type=release&genre=${selectedGenre}&q=${searchQuery}&per_page=10&page=1`,
-          {
-            headers: { Authorization: `Discogs token=${token}` },
-          }
+          `https://api.discogs.com/database/search?type=release&genre=${selectedGenre}&q=${searchQuery}&per_page=10&page=1`,
+          { headers: { Authorization: `Discogs token=${token}` } }
         );
         setDiscos(response.data.results);
       } catch (error) {
@@ -49,7 +50,7 @@ const App: React.FC = () => {
       }
     };
 
-    fetchDiscos();
+    if (selectedGenre) fetchDiscos();
   }, [selectedGenre, searchQuery]);
 
   return (
@@ -60,6 +61,7 @@ const App: React.FC = () => {
       <div>
         <label>Selecciona un género: </label>
         <select onChange={(e) => setSelectedGenre(e.target.value)} value={selectedGenre}>
+          <option value="">Todos los géneros</option>
           {generos.map((genero, index) => (
             <option key={index} value={genero}>
               {genero}
@@ -83,11 +85,24 @@ const App: React.FC = () => {
       {/* Mostrar discos */}
       <div>
         {discos.map((disco: any) => (
-          <div key={disco.id}>
-            <img src={disco.cover_image} alt={disco.title} />
-            <h3>{disco.title}</h3>
-            <p>Formato: {disco.format.join(', ')}</p>
-          </div>
+          <div>
+  {discos.map((disco: any) => (
+    <div key={disco.id}>
+      <img src={disco.cover_image} alt={disco.title} />
+      <h3>{disco.title}</h3>
+      <p><strong>Género:</strong> {disco.genre?.join(', ') || 'Desconocido'}</p>
+      <p><strong>Estilo:</strong> {disco.style?.join(', ') || 'Desconocido'}</p>
+      <p><strong>Formato:</strong> {disco.format?.join(', ') || 'Desconocido'}</p>
+      <a
+        href={`https://www.discogs.com/release/${disco.id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver más en Discogs
+      </a>
+    </div>
+  ))}
+</div>
         ))}
       </div>
     </div>
