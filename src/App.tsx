@@ -22,9 +22,7 @@ const App: React.FC = () => {
 
         // Extraemos géneros de múltiples discos
         response.data.results.forEach((result: any) => {
-          if (result.genre) {
-            result.genre.forEach((genre: string) => genres.add(genre));
-          }
+          result.genre?.forEach((genre: string) => genres.add(genre));
         });
 
         setGeneros(Array.from(genres)); // Convertimos el Set a un array único
@@ -40,17 +38,24 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchDiscos = async () => {
       try {
-        const response = await axios.get(
-          `https://api.discogs.com/database/search?type=release&genre=${selectedGenre}&q=${searchQuery}&per_page=10&page=1`,
-          { headers: { Authorization: `Discogs token=${token}` } }
-        );
+        let url = `https://api.discogs.com/database/search?type=release&q=${searchQuery}&per_page=10&page=1`;
+
+        if (selectedGenre) {
+          url += `&genre=${selectedGenre}`;
+        }
+
+        const response = await axios.get(url, {
+          headers: { Authorization: `Discogs token=${token}` },
+        });
+
         setDiscos(response.data.results);
       } catch (error) {
         console.error('Error al obtener discos:', error);
       }
     };
 
-    if (selectedGenre) fetchDiscos();
+    // ✅ Ahora siempre se ejecuta la búsqueda, incluso cuando no hay género seleccionado
+    fetchDiscos();
   }, [selectedGenre, searchQuery]);
 
   return (
@@ -85,24 +90,21 @@ const App: React.FC = () => {
       {/* Mostrar discos */}
       <div>
         {discos.map((disco: any) => (
-          <div>
-  {discos.map((disco: any) => (
-    <div key={disco.id}>
-      <img src={disco.cover_image} alt={disco.title} />
-      <h3>{disco.title}</h3>
-      <p><strong>Género:</strong> {disco.genre?.join(', ') || 'Desconocido'}</p>
-      <p><strong>Estilo:</strong> {disco.style?.join(', ') || 'Desconocido'}</p>
-      <p><strong>Formato:</strong> {disco.format?.join(', ') || 'Desconocido'}</p>
-      <a
-        href={`https://www.discogs.com/release/${disco.id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Ver más en Discogs
-      </a>
-    </div>
-  ))}
-</div>
+          <div key={disco.id}>
+            <img src={disco.cover_image} alt={disco.title} />
+            <h3>{disco.title}</h3>
+            <p><strong>Género:</strong> {disco.genre?.join(', ') || 'Desconocido'}</p>
+            <p><strong>Estilo:</strong> {disco.style?.join(', ') || 'Desconocido'}</p>
+            <p><strong>Formato:</strong> {disco.format?.join(', ') || 'Desconocido'}</p>
+            <p><strong>Sello:</strong> {disco.label?.join(', ') || 'Desconocido'}</p>
+            <a
+              href={disco.master_url || `https://www.discogs.com/release/${disco.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver más en Discogs
+            </a>
+          </div>
         ))}
       </div>
     </div>
