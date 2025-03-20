@@ -1,6 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import AppRoutes from "./routes/AppRoutes";
+
+// function App() {
+//   return <AppRoutes />;
+// }
+
+
+
+
+
+
+
 const App: React.FC = () => {
   const [discos, setDiscos] = useState([]);
   const [generos, setGeneros] = useState<string[]>([]);
