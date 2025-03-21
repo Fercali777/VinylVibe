@@ -1,11 +1,21 @@
+import { Link } from 'react-router-dom';
 
-import React from "react";
-
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header>
-      <h1>Header</h1>
-      
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            <Link to="/vinyl-hunt">Vinyl Hunt</Link> {/* link */}
+          </li>
+          <li>
+            <Link to="/register">Register</Link> {/* link */}
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };
