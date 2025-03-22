@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const Header = () => {
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Inicio</Link>
-          </li>
-          <li>
+    <header className='flex'>
+      <div className='logo'>
+      <Link to="/"><img src='/img/Logo.png'/></Link>
+      </div>
+      <nav className='mainMenu'>
             <Link to="/vinyl-hunt">Vinyl Hunt</Link> {/* link */}
-          </li>
-          <li>
-            <Link to="/register">Register</Link> {/* link */}
-          </li>
-        </ul>
+            <Link to="/my-spins">My Spins</Link> {/* link */}
       </nav>
+
+            <Link to="/register"><button className='rightMenuButton'>Login</button></Link> {/* link */}
+
     </header>
   );
 };

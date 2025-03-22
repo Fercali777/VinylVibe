@@ -1,5 +1,6 @@
 import AppRoutes from "./routes/AppRoutes";
 import { DiscogsProvider } from "./context/DiscogsContext";
+import './styles/App.css';
 
 const App: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import axios from "axios";
 
-// Definir el contexto
+// Context
 const DiscogsContext = createContext<any>(null);
 
 export const DiscogsProvider = ({ children }: { children: ReactNode }) => {
@@ -10,9 +10,9 @@ export const DiscogsProvider = ({ children }: { children: ReactNode }) => {
   const [selectedGenre, setSelectedGenre] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP"; // Reemplaza con tu token
+  const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP"; 
 
-  // Obtener géneros
+  // Get Genres
   useEffect(() => {
     const fetchGeneros = async () => {
       try {
@@ -35,7 +35,7 @@ export const DiscogsProvider = ({ children }: { children: ReactNode }) => {
     fetchGeneros();
   }, []);
 
-  // Obtener discos por género y búsqueda
+  // Get disck for gener and search
   useEffect(() => {
     const fetchDiscos = async () => {
       try {
@@ -51,7 +51,7 @@ export const DiscogsProvider = ({ children }: { children: ReactNode }) => {
 
         setDiscos(response.data.results);
       } catch (error) {
-        console.error("Error al obtener discos:", error);
+        console.error("Error findin disc:", error);
       }
     };
 
@@ -65,7 +65,7 @@ export const DiscogsProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Hook para usar el contexto
+// Hook for use in the context
 export const useDiscogs = () => {
   return useContext(DiscogsContext);
 };
