@@ -10,6 +10,7 @@ import MySpins from "../pages/MySpins";
 const AppRoutes = () => {
   return (
     <Router>
+      
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/my-spins" element={<MySpins />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+
       <Footer />
     </Router>
   );
