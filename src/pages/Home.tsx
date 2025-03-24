@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import '../styles/Home.css';
+import { AuthContext } from '../context/AuthContext';
 
 
 const Home = () => {
+
+  const {user} = useContext(AuthContext)
   return (
     <>
       <div className="content">
@@ -9,6 +13,7 @@ const Home = () => {
           <div className="homeContentBox">
             <div className="homeText">
               <h1>Find Your Next Vinyl Obsession</h1>
+              <h2>Wellcome {user?.userName} user</h2>
             </div>
             <div className="homeTextUnder">
               <input type="text" placeholder="Dig for names "></input>

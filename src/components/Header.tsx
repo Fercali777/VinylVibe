@@ -1,6 +1,12 @@
 import { Link } from 'react-router';
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from 'react';
 
 const Header = () => {
+  
+   const { user, login, logout } = useContext(AuthContext);
+
+
   return (
     <header className='flex'>
       <div className='logo'>
@@ -11,7 +17,7 @@ const Header = () => {
             <Link to="/my-spins">My Spins</Link> {/* link */}
       </nav>
 
-            <button variant="success" className='rightMenuButton'>Login</button>
+            <button variant="success" className='rightMenuButton' onClick={login}>Login</button>
 
     </header>
   );

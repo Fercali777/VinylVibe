@@ -29,8 +29,8 @@ export const AuthContext = createContext<AuthContextType>(AuthContextInitValue);
 //?2. Create the context's provider (the wharehouse/store)
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const currentUser = {
-    userName: "Max",
-    email: "max@cab.com",
+    userName: "Fer",
+    email: "fer@test.com",
   };
   //?3. Put here everything you want to share
 
