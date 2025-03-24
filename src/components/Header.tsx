@@ -11,7 +11,7 @@ const Header = () => {
             <Link to="/my-spins">My Spins</Link> {/* link */}
       </nav>
 
-            <Link to="/register"><button className='rightMenuButton'>Login</button></Link> {/* link */}
+            <button variant="success" className='rightMenuButton'>Login</button>
 
     </header>
   );

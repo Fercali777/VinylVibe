@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route } from "react-router"; // Usa react-router-dom
 import AppRoutes from "./routes/AppRoutes";
 import Home from "./pages/Home";
@@ -7,8 +8,10 @@ import MySpins from "./pages/MySpins";
 import './styles/App.css';
 
 
+
 const App = () => {
   return (
+    
     <Router> {/* Aquí envuelves todo en el Router */}
       <Routes>
         <Route path="/" element={<AppRoutes />}>
