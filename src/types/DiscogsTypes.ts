@@ -3,6 +3,7 @@ export interface Disco {
     title: string;
     cover_image: string;
     format: string[];
+    release_id: string;
   };
   
   export interface Genero {

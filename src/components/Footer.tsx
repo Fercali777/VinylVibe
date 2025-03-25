@@ -3,10 +3,14 @@ import { Link } from 'react-router';
 const Footer = () => {
   return (
     <footer className='flex'>
-      <div className='copy'>All rights reserved</div>
+
+      <img width="50" src='/img/Logo.png'/>
+      <p>© 2025 Vinyl Hunt. All rights reserved.</p>
+      <img width="250" src='/img/logos.png'/>
+
 
     </footer>
   );
 };
 
-export default Footer;
+export default Footer;     

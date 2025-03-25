@@ -13,7 +13,7 @@ const Home = () => {
           <div className="homeContentBox">
             <div className="homeText">
               <h1>Find Your Next Vinyl Obsession</h1>
-              {user ? <h2>Wellcome {user?.userName} user</h2> : <h2>not user logged</h2>}
+              {/* {user ? <h2>Wellcome {user?.userName} user</h2> : <h2>not user logged</h2>} */}
             </div>
             <div className="homeTextUnder">
               <input type="text" placeholder="Dig for names "></input>

@@ -53,10 +53,11 @@ body {
   padding: 20px 50px 20px 45px;
   background-color: rgba(33, 44, 53, 0.9);
 }
-input, input::selection{
+input, input::selection, select{
+  text-align: center;
   background-color: #FFFAAE;
   border: none;
-  border-radius: 20px;
+  border-radius: 20px 20px 20px 20px;
   padding: 8px 30px 8px 30px ;
   color: #978653;
   font-size: 15px;
@@ -64,14 +65,30 @@ input, input::selection{
   font-style: italic;
   font-weight: 800; 
   max-width: 600px;
+}
 
+.justitySpace {
+  justify-content: space-around;
+}
+
+.justityCenter {
+  justify-content: center;
 }
 
 
 
 
-
 /* Content------------------------------------------------------ */
+
+
+#root{
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: space-between;
+      min-width: 320px;
+}
+
 header {
 
   align-items: center;
@@ -104,32 +121,117 @@ footer{
   text-decoration: none;
   color: #FFFAAE;
   margin-right: 30px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
   font-weight: 800;
 }
-.rightMenuButton {
+
+button{
+  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
+  font-weight: 800; 
+  font-style: italic;
+  box-shadow: black 10px;
   background-color: #6DC9A8 ;
+
+
+}
+.alertMesage h1{
+  text-align: center;
+  color: ;
+
+}
+
+.huntBox {
+  background-image: url('/img/vibes.png') ;
+  margin-bottom: 50px;
+}
+
+.generalButton{
+  font-size: 21px;
+  height: 40px;
+  min-width: 200px;
+  border: none;
+  border-radius: 22px;
+  padding: 0px;
+  color: #2D3E37;
+  margin: 20px 0px 20px 0px;
+
+}
+.rightMenuButton {
+  font-size: 15px;
   height: 25px;
   width: 125px;
   border: none;
   border-radius: 22px;
   padding: 0px;
-  font-family: "Inter", sans-serif;
-  font-weight: 800; 
-  font-style: italic;
   color: #2D3E37;
-  box-shadow: black 10px;
+  
 }
 
+
+.vinylContent {
+  margin-bottom: 20px;
+}
+
+.vinylContent img{
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.alertMesage{
+
+}
+
+footer img {
+
+}
+
+
+
+
 /* Fonts ---------------------------------------------------------------------------*/
+
+p, h1, h2, h3, h4, h5, h6 {
+  display: block !important;
+  color: #FFFAAE;
+}
+
+a{
+  color: #6DC9A8;
+}
+
+
+
+.homeText h1 {
+  
+  color: #212C35;
+
+}
+
 
 h1 {
   all: unset;
   font-family: "Libre Baskerville",  Georgia, 'Times New Roman', Times, serif;
   font-weight: 800 ;
-  color: #212C35;
+  color:  #FFFAAE;
   font-size: 90px ;
   line-height: 92px;
+}
+
+h5 {  all: unset;
+  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
+  font-weight: 800 ;
+  color: #FFFAAE;
+  font-size: 15px ;
+  line-height: 20px;
+}
+
+p {  all: unset;
+  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
+  font-weight: 400 ;
+  color: #FFFAAE;
+  font-size: 12px ;
+  line-height: 20px;
+  
 }
 
 /* Grid & Flex----------------------------------------------------------------------*/

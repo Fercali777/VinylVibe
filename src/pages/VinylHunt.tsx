@@ -3,15 +3,15 @@ import axios from 'axios';
 
 const VinylHunt = () => {
   const [discos, setDiscos] = useState<any[]>([]);
-  const [generos, setGeneros] = useState<string[]>([]);
+  const [genres, setGenres] = useState<string[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const token = 'qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP'; // Reemplaza con tu token de Discogs
+  const token = 'qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP'; // token Discogs Personal
 
   // Obtener géneros desde varios discos
   useEffect(() => {
-    const fetchGeneros = async () => {
+    const fetchGenres = async () => {
       try {
         const response = await axios.get(
           `https://api.discogs.com/database/search?type=release&per_page=100&page=1&q=`,
@@ -24,20 +24,20 @@ const VinylHunt = () => {
           result.genre?.forEach((genre: string) => genres.add(genre));
         });
 
-        setGeneros(Array.from(genres)); // Convertimos el Set a un array único
+        setGenres(Array.from(genres)); // Convertimos el Set a un array único
       } catch (error) {
         console.error('Error al obtener géneros:', error);
       }
     };
 
-    fetchGeneros();
+    fetchGenres();
   }, []);
 
   // Obtener discos por género y búsqueda
   useEffect(() => {
     const fetchDiscos = async () => {
       try {
-        let url = `https://api.discogs.com/database/search?type=release&q=${searchQuery}&per_page=10&page=1`;
+        let url = `https://api.discogs.com/database/search?type=release&q=${searchQuery}&per_page=20&page=1`;
 
         if (selectedGenre) {
           url += `&genre=${selectedGenre}`;
@@ -57,49 +57,54 @@ const VinylHunt = () => {
   }, [selectedGenre, searchQuery]);
 
   return (
-    <div>
-      <h2>Explora los discos</h2>
+    <div className='row'>
+      
 
-      {/* Filtros */}
-      <div>
-        <label>Selecciona un género: </label>
+      {/* Filters */}
+      <div className='col-12 flex justitySpace'>
+        
         <select onChange={(e) => setSelectedGenre(e.target.value)} value={selectedGenre}>
-          <option value="">Todos los géneros</option>
-          {generos.map((genero, index) => (
-            <option key={index} value={genero}>
-              {genero}
+          <option value="">Every Beat, Every Style</option>
+          {genres.map((gener, index) => (
+            <option key={index} value={gener}>
+              {gener}
             </option>
           ))}
         </select>
-      </div>
-
-      <div>
-        <label htmlFor="search">Buscar artista: </label>
         <input
           id="search"
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Escribe el nombre del artista"
+          placeholder="Type the Artist's Name"
         />
+
+        
+
+      </div>
+      <div className='col-12 flex justityCenter huntBox'>
+      <button className='generalButton'>Hunt</button>
       </div>
 
-      {/* Mostrar discos */}
-      <div>
+
+      {/* Show disc */}
+      <div className='row'>
         {discos.map((disco: any) => (
-          <div key={disco.id}>
+          <div className='col-3 vinylContent' key={disco.id}>
             <img src={disco.cover_image} alt={disco.title} />
-            <h3>{disco.title}</h3>
-            <p><strong>Género:</strong> {disco.genre?.join(', ') || 'Desconocido'}</p>
+            <h5>{disco.title}</h5>
+            {/* <p><strong>Género:</strong> {disco.genre?.join(', ') || 'Desconocido'}</p>
             <p><strong>Estilo:</strong> {disco.style?.join(', ') || 'Desconocido'}</p>
-            <p><strong>Formato:</strong> {disco.format?.join(', ') || 'Desconocido'}</p>
-            <p><strong>Sello:</strong> {disco.label?.join(', ') || 'Desconocido'}</p>
+            <p><strong>Sello:</strong> {disco.label?.join(', ') || 'Desconocido'}</p> */}
+            <p><strong>Format:</strong> {disco.format?.join(', ') || 'Desconocido'}</p>
+            
+
             <a
               href={disco.master_url || `https://www.discogs.com/release/${disco.id}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ver más en Discogs
+              See in Discogs
             </a>
           </div>
         ))}
@@ -111,58 +116,3 @@ const VinylHunt = () => {
 export default VinylHunt;
 
 
-// import { useDiscogs } from "../context/DiscogsContext";
-
-// const VinylHunt = () => {
-//   const { discos, generos, selectedGenre, setSelectedGenre, searchQuery, setSearchQuery } = useDiscogs();
-
-//   return (
-//     <div>
-//       <h1>Explorador de Discos</h1>
-
-//       {/* Menú de géneros */}
-//       <div>
-//         <label>Selecciona un género: </label>
-//         <select onChange={(e) => setSelectedGenre(e.target.value)} value={selectedGenre}>
-//           <option value="">Todos los géneros</option>
-//           {generos.map((genero, index) => (
-//             <option key={index} value={genero}>
-//               {genero}
-//             </option>
-//           ))}
-//         </select>
-//       </div>
-
-//       {/* Buscador de artistas */}
-//       <div>
-//         <label htmlFor="search">Buscar artista: </label>
-//         <input
-//           id="search"
-//           type="text"
-//           value={searchQuery}
-//           onChange={(e) => setSearchQuery(e.target.value)}
-//           placeholder="Escribe el nombre del artista"
-//         />
-//       </div>
-
-//       {/* Mostrar discos */}
-//       <div>
-//         {discos.map((disco: any) => (
-//           <div key={disco.id}>
-//             <img src={disco.cover_image} alt={disco.title} />
-//             <h3>{disco.title}</h3>
-//             <p><strong>Género:</strong> {disco.genre?.join(", ") || "Desconocido"}</p>
-//             <p><strong>Estilo:</strong> {disco.style?.join(", ") || "Desconocido"}</p>
-//             <p><strong>Formato:</strong> {disco.format?.join(", ") || "Desconocido"}</p>
-//             <p><strong>Sello:</strong> {disco.label?.join(", ") || "Desconocido"}</p>
-//             <a href={disco.master_url || `https://www.discogs.com/release/${disco.id}`} target="_blank" rel="noopener noreferrer">
-//               Ver más en Discogs
-//             </a>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VinylHunt;

@@ -11,7 +11,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   //   const isUserLoggedin = user ? true : false;
   const isUserActive = useUserStatus();
   return (
-    <div>{isUserActive ? children : <h1>You need to login first</h1>}</div>
+    <div className="container">{isUserActive ? children : <div className="alertMesage"><h1>Log in, Before you dig!</h1></div>}</div>
   );
 }
 
