@@ -17,7 +17,7 @@ const Header = () => {
             <Link to="/my-spins">My Spins</Link> {/* link */}
       </nav>
 
-            <button variant="success" className='rightMenuButton' onClick={login}>Login</button>
+           {user? <button className='rightMenuButton' onClick={logout}>Log Out</button> : <button className='rightMenuButton' onClick={login}>Login</button> }
 
     </header>
   );

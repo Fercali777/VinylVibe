@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import MySpins from "./pages/MySpins";
 import "./styles/App.css";
 import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<AppRoutes />}>
             <Route path="/" element={<Home />} />
-            <Route path="/vinyl-hunt" element={<VinylHunt />} />
+            <Route path="/vinyl-hunt" element={<ProtectedRoute><VinylHunt /></ProtectedRoute>} />
             <Route path="/my-spins" element={<MySpins />} />
             <Route path="/register" element={<Register />} />
           </Route>

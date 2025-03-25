@@ -1,7 +1,16 @@
 *, ::after, ::before {
   box-sizing: border-box;
 }
-
+.backHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 320px;
+  background-image: url('/img/back2x.jpg') ;
+  background-size: cover;
+  background-position: bottom;
+  height: 100%;
+}
 div {
   display: block;
   unicode-bidi: isolate;
