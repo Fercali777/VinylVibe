@@ -31,7 +31,7 @@ body {
 }
 .homeContentBox {
   margin-left: 40px;
-  margin-right: -150px;
+  margin-right: -160px;
   max-width: 650px;
 }
 .homeText {
@@ -39,7 +39,7 @@ body {
   background: linear-gradient(to bottom, #F7D95C, #ffa73b); 
 }
 .homeImage {
-  margin-top: -15vh;
+  margin-top: -20vh;
     width: auto;
   height: 95vh; 
   object-fit: cover; 
@@ -140,9 +140,10 @@ button{
 
 }
 
-.huntBox {
+.vibesTexture {
   background-image: url('/img/vibes.png') ;
   margin-bottom: 50px;
+  padding-top: 20px;
 }
 
 .generalButton{

@@ -57,7 +57,8 @@ const VinylHunt = () => {
   }, [selectedGenre, searchQuery]);
 
   return (
-    <div className='row'>
+    <>
+    <div className='row vibesTexture'>
       
 
       {/* Filters */}
@@ -82,10 +83,10 @@ const VinylHunt = () => {
         
 
       </div>
-      <div className='col-12 flex justityCenter huntBox'>
+      <div className='col-12 flex justityCenter'>
       <button className='generalButton'>Hunt</button>
       </div>
-
+      </div>
 
       {/* Show disc */}
       <div className='row'>
@@ -109,7 +110,8 @@ const VinylHunt = () => {
           </div>
         ))}
       </div>
-    </div>
+    
+    </>
   );
 };
 
