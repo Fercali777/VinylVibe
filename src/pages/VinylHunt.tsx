@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { Link } from "react-router"; 
+import axios from "axios";
 
 const VinylHunt = () => {
   const [discos, setDiscos] = useState<any[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
-  const [selectedGenre, setSelectedGenre] = useState<string>('');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const token = 'qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP'; // token Discogs Personal
+  const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP"; // token Discogs Personal
 
-  // Obtener géneros desde varios discos
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -24,21 +24,21 @@ const VinylHunt = () => {
           result.genre?.forEach((genre: string) => genres.add(genre));
         });
 
-        setGenres(Array.from(genres)); // Convertimos el Set a un array único
+        setGenres(Array.from(genres));
       } catch (error) {
-        console.error('Error al obtener géneros:', error);
+        console.error("Error al obtener géneros:", error);
       }
     };
 
     fetchGenres();
   }, []);
 
-  // Obtener discos por género y búsqueda
   useEffect(() => {
     const fetchDiscos = async () => {
       try {
         let url = `https://api.discogs.com/database/search?type=release&q=${searchQuery}&per_page=20&page=1`;
 
+        // Optional: Validate if Discogs API supports filtering by genre
         if (selectedGenre) {
           url += `&genre=${selectedGenre}`;
         }
@@ -49,7 +49,7 @@ const VinylHunt = () => {
 
         setDiscos(response.data.results);
       } catch (error) {
-        console.error('Error al obtener discos:', error);
+        console.error("Error al obtener discos:", error);
       }
     };
 
@@ -58,63 +58,56 @@ const VinylHunt = () => {
 
   return (
     <>
-    <div className='row vibesTexture'>
-      
+      <div className="row vibesTexture">
+        {/* Filters */}
+        <div className="col-12 flex justitySpace">
+          <select
+            onChange={(e) => setSelectedGenre(e.target.value)}
+            value={selectedGenre}
+          >
+            <option value="">Every Beat, Every Style</option>
+            {genres.map((gener, index) => (
+              <option key={index} value={gener}>
+                {gener}
+              </option>
+            ))}
+          </select>
 
-      {/* Filters */}
-      <div className='col-12 flex justitySpace'>
-        
-        <select onChange={(e) => setSelectedGenre(e.target.value)} value={selectedGenre}>
-          <option value="">Every Beat, Every Style</option>
-          {genres.map((gener, index) => (
-            <option key={index} value={gener}>
-              {gener}
-            </option>
-          ))}
-        </select>
-        <input
-          id="search"
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Type the Artist's Name"
-        />
+          <input
+            id="search"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Type the Artist's Name"
+          />
+        </div>
 
-        
-
+        <div className="col-12 flex justityCenter">
+          <button className="generalButton">Hunt</button>
+        </div>
       </div>
-      <div className='col-12 flex justityCenter'>
-      <button className='generalButton'>Hunt</button>
-      </div>
-      </div>
 
-      {/* Show disc */}
-      <div className='row'>
+      {/* Show discs */}
+      <div className="row">
         {discos.map((disco: any) => (
-          <div className='col-3 vinylContent' key={disco.id}>
+          <div className="col-3 vinylContent" key={disco.id}>
             <img src={disco.cover_image} alt={disco.title} />
             <h5>{disco.title}</h5>
-            {/* <p><strong>Género:</strong> {disco.genre?.join(', ') || 'Desconocido'}</p>
-            <p><strong>Estilo:</strong> {disco.style?.join(', ') || 'Desconocido'}</p>
-            <p><strong>Sello:</strong> {disco.label?.join(', ') || 'Desconocido'}</p> */}
-            <p><strong>Format:</strong> {disco.format?.join(', ') || 'Desconocido'}</p>
-            
+            <p>
+              <strong>Format:</strong>{" "}
+              {Array.isArray(disco.format)
+                ? disco.format.join(", ")
+                : disco.format || "Desconocido"}
+            </p>
 
-            <a
-              href={disco.master_url || `https://www.discogs.com/release/${disco.id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              See in Discogs
-            </a>
+            <Link to={`/vinyl/${disco.id}`} className="detail-link">
+              View Details
+            </Link>
           </div>
         ))}
       </div>
-    
     </>
   );
 };
 
 export default VinylHunt;
-
-
