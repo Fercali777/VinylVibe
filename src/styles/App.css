@@ -1,6 +1,19 @@
 *, ::after, ::before {
   box-sizing: border-box;
 }
+
+
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  min-width: 320px;
+}
 .backHome {
   display: flex;
   flex-direction: column;
@@ -10,10 +23,6 @@
   background-size: cover;
   background-position: bottom;
   height: 100%;
-}
-div {
-  display: block;
-  unicode-bidi: isolate;
 }
 .no-bootstrap {
   all: revert;
@@ -54,8 +63,8 @@ body {
   background-color: rgba(33, 44, 53, 0.9);
 }
 input, input::selection, select{
-  text-align: center;
-  background-color: #FFFAAE;
+  text-align: left;
+  background-color: #F5F4D9;
   border: none;
   border-radius: 20px 20px 20px 20px;
   padding: 8px 30px 8px 30px ;
@@ -65,6 +74,16 @@ input, input::selection, select{
   font-style: italic;
   font-weight: 800; 
   max-width: 600px;
+}
+
+select {
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('img/narrow.svg'); 
+  background-position: calc(100% - 15px) center; 
+  background-repeat: no-repeat;
+  padding-right: 50px; 
 }
 
 .justitySpace {
@@ -81,13 +100,7 @@ input, input::selection, select{
 /* Content------------------------------------------------------ */
 
 
-#root{
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      justify-content: space-between;
-      min-width: 320px;
-}
+
 
 header {
 
@@ -196,18 +209,17 @@ p, h1, h2, h3, h4, h5, h6 {
   color: #FFFAAE;
 }
 
-a{
+a {
   color: #6DC9A8;
 }
 
-
-
 .homeText h1 {
-  
   color: #212C35;
-
 }
 
+ul {
+  color: #FFFAAE;
+}
 
 h1 {
   all: unset;
