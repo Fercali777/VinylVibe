@@ -26,10 +26,6 @@ const VinylDetail = () => {
   if (!disco) return <p>Loading...</p>;
 
 
-  
-
-
-
   return (
     <div className="vinyl-detail row">
       <div className="col detailsImgBox animationGrow" >

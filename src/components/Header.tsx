@@ -15,9 +15,10 @@ const Header = () => {
       <nav className='mainMenu'>
             <Link to="/vinyl-hunt">Vinyl Hunt</Link> {/* link */}
             <Link to="/my-spins">My Spins</Link> {/* link */}
+            <Link to="/auth">login</Link> {/* link */}
       </nav>
 
-           {user? <button className='rightMenuButton' onClick={logout}>Log Out</button> : <button className='rightMenuButton' onClick={login}>Login</button> }
+           {user? <button className='rightMenuButton' onClick={logout}>Log Out</button> : <Link className='rightMenuButton' to="/auth"><button className='rightMenuButton'>Login</button></Link> }
 
     </header>
   );
