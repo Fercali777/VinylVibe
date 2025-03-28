@@ -25,18 +25,24 @@ const VinylDetail = () => {
 
   if (!disco) return <p>Loading...</p>;
 
+
+  
+
+
+
   return (
-    <div className="vinyl-detail">
-      <h2>{disco.title}</h2>
+    <div className="vinyl-detail row">
+      <div className="col detailsImgBox animationGrow" >
       <img src={disco.images?.[0]?.uri} alt={disco.title} />
+      </div>
       
+      <div className="col detailsTextBox animationGrow">
+      <h2>{disco.title}</h2>
       <p><strong>Artist:</strong> {disco.artists?.map((artist: any) => artist.name).join(", ")}</p>
-      <p><strong>Genre:</strong> {disco.genres?.join(", ") || "Unknown"}</p>
-      <p><strong>Style:</strong> {disco.styles?.join(', ') || 'Unknown'}</p>
       <p><strong>Label:</strong> {disco.labels?.map((label: any) => label.name).join(", ") || "Unknown"}</p>
       <p><strong>Year:</strong> {disco.year || "Unknown"}</p>
-
-      {/* Información adicional */}
+      <p><strong>Genre:</strong> {disco.genres?.join(", ") || "Unknown"}</p>
+      <p><strong>Style:</strong> {disco.styles?.join(', ') || 'Unknown'}</p>
       <p><strong>Tracklist:</strong></p>
       <ul>
         {disco.tracklist?.map((track: any, index: number) => (
@@ -48,10 +54,12 @@ const VinylDetail = () => {
 
       <p><strong>Format:</strong> {disco.formats?.map((format: any) => format.name).join(", ")}</p>
       <p><strong>Country:</strong> {disco.country || "Unknown"}</p>
-
       <a href={disco.uri} target="_blank" rel="noopener noreferrer">
+      <button  className="rightMenuButton">
         See in Discogs
+      </button>
       </a>
+      </div>
     </div>
   );
 };

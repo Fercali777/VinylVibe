@@ -26,7 +26,7 @@ const VinylHunt = () => {
 
         setGenres(Array.from(genres));
       } catch (error) {
-        console.error("Error al obtener géneros:", error);
+        console.error("Error getting results:", error);
       }
     };
 
@@ -50,7 +50,7 @@ const VinylHunt = () => {
 
         setDiscos(response.data.results);
       } catch (error) {
-        console.error("Error al obtener discos:", error);
+        console.error("Error getting vilyls:", error);
       } finally {
         setShouldSearch(false); // Reset para evitar llamadas innecesarias
       }
@@ -58,6 +58,15 @@ const VinylHunt = () => {
 
     fetchDiscos();
   }, [shouldSearch]); // Solo se activa cuando shouldSearch cambia
+
+  useEffect(() => {
+    // Aplicar el retraso de animación cuando los discos hayan sido cargados
+    const divs = document.querySelectorAll('.vinylContent');
+
+    divs.forEach((div, index) => {
+      div.style.animationDelay = `${index * 0.2}s`; // Ajusta el retraso de cada div
+    });
+  }, [discos]); // Este useEffect se ejecuta cada vez que discos cambia
 
   return (
     <>
@@ -96,7 +105,7 @@ const VinylHunt = () => {
       {/* Mostrar discos */}
       <div className="row">
         {discos.map((disco: any) => (
-          <div className="col-3 vinylContent" key={disco.id}>
+          <div className="col-3 vinylContent animationDownUp" key={disco.id}>
             <img src={disco.cover_image} alt={disco.title} />
             <h5>{disco.title}</h5>
             <p>
