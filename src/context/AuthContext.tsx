@@ -1,7 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth } from "../lib/firebase"; 
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+
 
 console.log('auth:', auth); 
 
@@ -79,24 +81,22 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       });
   };
 
-  const register = (email: string, password: string) => {
-
+  const register = (email: string, password: string, name: string) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up 
         const user = userCredential.user;
-        setUser(user);
-
-
+  
+        // Actualizar el perfil con el nombre
+        updateProfile(user, { displayName: name }).then(() => {
+          console.log("Nombre guardado en Firebase:", name);
+  
+          // 🔥 Forzar actualización del usuario para incluir el displayName
+          setUser({ ...user, displayName: name });
+        }).catch((error) => console.log("Error actualizando el perfil:", error));
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('errorMessage', errorMessage)
-        setUser(user)
-
-      });
-  }
+      .catch((error) => console.log("Error en el registro:", error));
+  };
+  
   
   const logout = () => {
     signOut(auth).then(() => {
@@ -111,6 +111,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   //   setUser(null);
   // };
 
+
+  
   return (
     <AuthContext.Provider value={{ user, login, logout, register }}>
       {children}
@@ -118,22 +120,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   );
 };
 
-// Firbase register---------------------------------------------------------------------------------
 
-const register = (email : string, password : string) => {
-   
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    console.log('user', user)
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log('errorMesage', errorMesage)
-    // ..
-  });
 
-}
+
+
+

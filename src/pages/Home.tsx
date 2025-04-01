@@ -3,9 +3,14 @@ import '../styles/Home.css';
 import { AuthContext } from '../context/AuthContext';
 
 
+
+
+
+
+
 const Home = () => {
 
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   return (
     <>
       <div className="content">
@@ -13,7 +18,8 @@ const Home = () => {
           <div className="homeContentBox">
             <div className="homeText">
               <h1>Find Your Next Vinyl Obsession</h1>
-              {/* {user ? <h2>Wellcome {user?.userName} user</h2> : <h2>not user logged</h2>} */}
+              <h2>Hola, {user?.displayName ? user.displayName : "invitado"}!</h2>
+             
             </div>
             <div className="homeTextUnder">
               <input type="text" placeholder="Dig for names "></input>

@@ -4,29 +4,31 @@ import { Link } from 'react-router';
 
 
 function Register() {
-  const { register, login } = useContext(AuthContext);
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPW, setLoginPW] = useState("");
+  const { register } = useContext(AuthContext);
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPW, setRegisterPW] = useState("");
+  const [registerName, setRegisterName] = useState("");
 
   const handleRegister = (e: FormEvent) => {
     e.preventDefault();
-    register(registerEmail, registerPW);
+    register(registerEmail, registerPW, registerName);
   };
-  const handleLogin = (e: FormEvent) => {
-    e.preventDefault();
-    login(loginEmail, loginPW);
-  };
+
+
+
 
   return (
     <div className="content">
-
-
       <section className="flex formSection">
         <div className="fomContentBox">
           <h2>Create Your Account & Turn Up the Volume</h2>
           <form className="flex direction-column" onSubmit={handleRegister}>
+          <input
+    placeholder="Enter your name"
+    type="text"
+    value={registerName}
+    onChange={(e) => setRegisterName(e.target.value)}
+  />
             <input
               placeholder="enter email"
               type="email"
