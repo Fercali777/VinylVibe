@@ -9,6 +9,7 @@ import "./styles/App.css";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/login";
+import Register from "./pages/register";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
             <Route path="/vinyl-hunt" element={<ProtectedRoute><VinylHunt /></ProtectedRoute>} />
             <Route path="/vinyl/:id" element={<ProtectedRoute><VinylDetail /></ProtectedRoute>} />
             <Route path="/my-spins" element={<MySpins />} />
-            <Route path="auth" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
         </Routes>

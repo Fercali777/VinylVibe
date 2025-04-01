@@ -1,10 +1,9 @@
-import { useState, useContext, FormEvent } from 'react';
-import { AuthContext } from '../context/AuthContext';
-
+import { useState, useContext, FormEvent } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { Link } from 'react-router';
 
 function Login() {
-
-  const { register, login } = useContext(AuthContext)
+  const { register, login } = useContext(AuthContext);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPW, setLoginPW] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -12,32 +11,43 @@ function Login() {
 
   const handleRegister = (e: FormEvent) => {
     e.preventDefault();
-    register(registerEmail, registerPW)
-  }
+    register(registerEmail, registerPW);
+  };
   const handleLogin = (e: FormEvent) => {
     e.preventDefault();
-    login(loginEmail, loginPW)
-  }
+    login(loginEmail, loginPW);
+  };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin} >
-        <input placeholder="enter email" type='email' value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
-        <input placeholder="enter password" type="password" value={loginPW} onChange={(e) => setLoginPW(e.target.value)} />
-        <button type='submit'>Login!</button>
-      </form>
+    <div className="content">
+      <section className="flex formSection ">
+        <div className="fomContentBox ">
+          <h2>Log In & Keep the Music Spinning</h2>
+          <form className="flex direction-column" onSubmit={handleLogin}>
+            <input
+              placeholder="enter email"
+              type="email"
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
+            />
+            <input
+              placeholder="enter password"
+              type="password"
+              value={loginPW}
+              onChange={(e) => setLoginPW(e.target.value)}
+            />
+            <button className="generalButton " type="submit">Login!</button>
 
-      <hr />
+            <h4>I don't have an account, I want to register</h4>
 
-      <h1>Register</h1>
-      <form onSubmit={handleRegister}>
-        <input placeholder="enter email" type='email' value={registerEmail} onChange={(e) => setRegisterEmail(e.target.value)} />
-        <input placeholder="enter password" type="password" value={registerPW} onChange={(e) => setRegisterPW(e.target.value)} />
-        <button type='submit'>Register!</button>
-      </form>
+            <Link to="/register"><button className="generalButtonYellow " >Register</button></Link> {/* link */}
+          </form>
+        </div>
+        <img className="formImage" src="/img/suricata-front 1.png"></img>
+      </section>
+
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

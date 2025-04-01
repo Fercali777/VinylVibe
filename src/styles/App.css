@@ -1,13 +1,14 @@
-*, ::after, ::before {
+*,
+::after,
+::before {
   box-sizing: border-box;
 }
-
 
 div {
   display: block;
   unicode-bidi: isolate;
 }
-#root{
+#root {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -19,7 +20,7 @@ div {
   flex-direction: column;
   justify-content: space-between;
   min-width: 320px;
-  background-image: url('/img/back2x.jpg') ;
+  background-image: url("/img/back2x.jpg");
   background-size: cover;
   background-position: bottom;
   height: 100%;
@@ -28,12 +29,12 @@ div {
   all: revert;
 }
 body {
-  background-color: #302B3D !important;
+  background-color: #302b3d !important;
   height: 100%;
   margin: 0px;
 }
 
-.homeSection {
+.homeSection, .formSection{
   justify-content: center;
   align-items: center;
 }
@@ -42,46 +43,98 @@ body {
   margin-right: -160px;
   max-width: 650px;
 }
+
+.fomContentBox {
+  margin-left: 40px;
+  margin-right: -40px ;
+  max-width: 650px;
+}
 .homeText {
   padding: 35px 50px 35px 45px;
-  background: linear-gradient(to bottom, #F7D95C, #ffa73b); 
+  background: linear-gradient(to bottom, #f7d95c, #ffa73b);
 }
 .homeImage {
   margin-top: -20vh;
-    width: auto;
-  height: 95vh; 
-  object-fit: cover; 
-  align-self: flex-end; 
+  width: auto;
+  height: 95vh;
+  object-fit: cover;
+  align-self: flex-end;
 }
-.homeLogos { 
+
+.formImage {
+  height: ;
+  object-fit: cover;
+  align-self: flex-end;
+  max-width: 600px;
+}
+.homeLogos {
   padding: 20px 50px 20px 45px;
 }
-.homeTextUnder{
+.homeTextUnder {
   padding: 20px 50px 20px 45px;
   background-color: rgba(33, 44, 53, 0.9);
 }
-input, input::selection, select{
+input,
+input::selection,
+select {
   text-align: left;
-  background-color: #F5F4D9;
+  background-color: #f5f4d9 !important;
   border: none;
   border-radius: 20px 20px 20px 20px;
-  padding: 8px 30px 8px 30px ;
-  color: #978653;
+  padding: 8px 30px 8px 30px;
+  color: #978653 !important;
   font-size: 15px;
   font-family: "Inter", sans-serif;
   font-style: italic;
-  font-weight: 800; 
-  max-width: 600px;
+  font-weight: 800;
+  max-width: 400px;
+}
+input:focus, :valid, {
+
+  background-color: #f5f4d9 !important;
+  border: none;
+  border-radius: 20px 20px 20px 20px;
+  padding: 8px 30px 8px 30px;
+  color: #978653 !important;
+  font-weight: 800;
+  max-width: 400px;
+
+}
+input.form-control {
+
+  background-color: #f5f4d9 !important;
+  border: none;
+  border-radius: 20px 20px 20px 20px;
+  padding: 8px 30px 8px 30px;
+  color: #978653 !important;
+  font-weight: 800;
+  max-width: 400px;
+
+}
+input:placeholder-shown {
+
+  background-color: #f5f4d9 !important;
+  border: none;
+  border-radius: 20px 20px 20px 20px;
+  padding: 8px 30px 8px 30px;
+  color: #978653 !important;
+  font-weight: 800;
+  max-width: 400px;
+
+}
+
+.direction-column input {
+margin-bottom: 20px;
 }
 
 select {
-  appearance: none; 
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('img/narrow.svg'); 
-  background-position: calc(100% - 15px) center; 
+  background-image: url("img/narrow.svg");
+  background-position: calc(100% - 15px) center;
   background-repeat: no-repeat;
-  padding-right: 50px; 
+  padding-right: 50px;
 }
 
 .justitySpace {
@@ -92,27 +145,20 @@ select {
   justify-content: center;
 }
 
-
-
-
 /* Content------------------------------------------------------ */
 
-
-
-
 header {
-
   align-items: center;
   justify-content: space-between;
   padding: 30px 30px 30px 30px;
   flex-direction: row;
 }
-footer{
+footer {
   height: 30px;
-  color: #FFFAAE;
+  color: #fffaae;
   justify-content: space-between;
   align-items: center;
-  background-color: #302B3D;
+  background-color: #302b3d;
   padding: 3px 30px 3px 30px;
 }
 .logo img {
@@ -127,39 +173,53 @@ footer{
 .mainMenu a {
   font-size: 15px;
   text-decoration: none;
-  color: #FFFAAE;
+  color: #fffaae;
   margin-right: 30px;
-  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
+  font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
   font-weight: 800;
 }
-button{
-  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
-  font-weight: 800; 
+button {
+  font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
+  font-weight: 800;
   font-style: italic;
   box-shadow: black 10px;
-  background-color: #6DC9A8 ;
+  background-color: #6dc9a8;
 }
-.alertMesage h1{
+.alertMesage h1 {
   text-align: center;
   color: ;
 }
 
 .vibesTexture {
-  background-image: url('/img/vibes.png') ;
+  background-image: url("/img/vibes.png");
   margin-bottom: 50px;
   padding-top: 20px;
 }
 
-.generalButton{
+.generalButton {
   font-size: 21px;
   height: 40px;
+  display: inline-block !important;
+  max-width: min-content;
   min-width: 200px;
   border: none;
   border-radius: 22px;
   padding: 0px;
-  color: #2D3E37;
+  color: #2d3e37;
   margin: 20px 0px 20px 0px;
-
+}
+.generalButtonYellow {
+  font-size: 21px;
+  height: 40px;
+  display: inline-block !important;
+  max-width: min-content;
+  min-width: 200px;
+  border: none;
+  border-radius: 22px;
+  padding: 0px;
+  color: #2d3e37;
+  margin: 20px 0px 20px 0px;
+  background-color: #F8E18C;
 }
 .rightMenuButton {
   font-size: 15px;
@@ -168,136 +228,143 @@ button{
   border: none;
   border-radius: 22px;
   padding: 0px;
-  color: #2D3E37;
-  
+  color: #2d3e37;
 }
-
 
 .vinylContent {
   margin-bottom: 20px;
 }
 
-.vinylContent img{
+.vinylContent img {
   width: 100%;
   margin-bottom: 30px;
   border-radius: 10px;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3)
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
 }
 
 .detailsImgBox {
   padding: 50px;
 }
-.detailsImgBox img{
+.detailsImgBox img {
   width: 100%;
   border-radius: 10px;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3)
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
 }
-.vinyl-detail{
+.vinyl-detail {
   margin-bottom: 40px;
 }
 .detailsTextBox {
-  color: #212C35;
+  color: #212c35;
   padding: 40px;
-  background-color: #F5F4D9;
+  background-color: #f5f4d9;
   border-radius: 10px;
-  box-shadow: 12px 12px 9px rgba(0, 0, 0, 0.3)
+  box-shadow: 12px 12px 9px rgba(0, 0, 0, 0.3);
 }
 .detailsTextBox p,
 .detailsTextBox h4,
 .detailsTextBox h5,
 .detailsTextBox h6,
-.detailsTextBox li  {
-  color: #212C35; 
+.detailsTextBox li {
+  color: #212c35;
 }
 
 .detailsTextBox h1,
 .detailsTextBox h2,
-.detailsTextBox h3
- {
-  color: #302B3D; 
+.detailsTextBox h3 {
+  color: #302b3d;
 }
 
 .detailsTextBox button {
   margin-top: 20px;
-
 }
 
 
-.alertMesage{
+.fomContentBox form{
+margin-top: 40px;
+}
 
+.alertMesage {
 }
 
 footer img {
-
 }
-
-
-
 
 /* Fonts ---------------------------------------------------------------------------*/
 
-
 a {
-  color: #6DC9A8;
+  color: #6dc9a8;
 }
 
 .homeText h1 {
-  color: #212C35;
+  color: #212c35;
 }
-
 
 h1 {
   all: unset;
-  font-family: "Libre Baskerville",  Georgia, 'Times New Roman', Times, serif;
-  font-weight: 800 ;
+  font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+  font-weight: 800;
 
-  font-size: 90px ;
+  font-size: 90px;
   line-height: 92px;
 }
 h2 {
   all: unset;
-  font-family: "Libre Baskerville",  Georgia, 'Times New Roman', Times, serif;
-  font-weight: 800 ;
-  font-size: 48px ;
-  line-height: 61px;
+  font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 51px;
 }
 h3 {
   all: unset;
-  font-family: "Libre Baskerville",  Georgia, 'Times New Roman', Times, serif;
-  font-weight: 800 ;
-  font-size: 32px ;
+  font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+  font-weight: 800;
+  font-size: 32px;
   line-height: 40px;
 }
+h4 {
+  all: unset;
+  font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+}
 
-h5 {  all: unset;
-  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
-  font-weight: 800 ;
+h5 {
+  all: unset;
+  font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
+  font-weight: 800;
 
-  font-size: 15px ;
+  font-size: 15px;
   line-height: 20px;
 }
 
-p {  all: unset;
-  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
-  font-weight: 400 ;
+p {
+  all: unset;
+  font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
+  font-weight: 400;
 
-  font-size: 12px ;
+  font-size: 12px;
   line-height: 20px;
-  
 }
 li {
-  font-family: "Inter", "Calibri", "Helvetica Neue",  sans-serif;
-  font-weight: 400 ;
+  font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
+  font-weight: 400;
 
-  font-size: 12px ;
+  font-size: 12px;
   line-height: 20px;
-  
 }
-p, h1, h2, h3, h4, h5, h6, ul, li {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
   display: block !important;
-  color: #FFFAAE;
+  color: #fffaae;
 }
-
 
 /* Animations ---------------------------------------------------------------------- */
 
@@ -338,16 +405,16 @@ p, h1, h2, h3, h4, h5, h6, ul, li {
   animation: downUp 0.3s ease-out forwards;
 }
 
-
 /* Grid & Flex----------------------------------------------------------------------*/
-
-
 
 content {
   margin: 0px 15% 0px 15%;
 }
 .flex {
   display: flex;
+}
+.direction-column {
+  flex-direction: column;
 }
 .space-bet {
   justify-content: space-between;
@@ -363,7 +430,7 @@ content {
 }
 .grid-1-col {
   display: grid;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
 .grid-2-col {
@@ -388,22 +455,18 @@ content {
   gap: 40px;
 }
 
-
 /* Breakpoints--------------------------------------------------------------- */
-
 
 @media (max-width: 1280px) {
   header {
     flex-direction: row;
   }
-  footer{
+  footer {
     height: 30px;
-    
   }
   content {
     margin: 0px 5% 0px 5%;
   }
-
 }
 /* Laptops and Small Screens ------------ */
 @media (max-width: 1025px) {
@@ -435,7 +498,6 @@ content {
 
 /* Mobile devices -------------------- */
 @media (max-width: 768px) {
-
   .content {
     margin: 0px 20px 60px 20px;
   }
