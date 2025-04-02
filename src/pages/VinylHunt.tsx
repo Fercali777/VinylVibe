@@ -23,6 +23,10 @@ const VinylHunt = () => {
     }
   }, [location.search]);
 
+   useEffect(() => {
+     setShouldSearch(true); // Activate vefore the user look
+   }, []);
+
   useEffect(() => {
     if (!shouldSearch) return;
 
@@ -49,22 +53,61 @@ const VinylHunt = () => {
     fetchDiscos();
   }, [shouldSearch]);
 
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.discogs.com/database/search?type=release&per_page=100&page=1&q=`,
+          { headers: { Authorization: `Discogs token=${token}` } }
+        );
+  
+        const genresSet = new Set<string>();
+        response.data.results.forEach((result: any) => {
+          if (result.genre) {
+            result.genre.forEach((genre: string) => genresSet.add(genre));
+          }
+        });
+  
+        const genresArray = Array.from(genresSet);
+        console.log("Genres fetched:", genresArray); // 🔥 Verifica los datos en consola
+        setGenres(genresArray);
+      } catch (error) {
+        console.error("Error getting genres:", error);
+      }
+    };
+  
+    fetchGenres();
+  }, []);
+
   return (
     <>
       <div className="row vibesTexture paddin1">
         {/* Filtros */}
+
+
+
+
+        
         <div className="col-12 flex justitySpace">
-          <select
-            onChange={(e) => setSelectedGenre(e.target.value)}
-            value={selectedGenre}
-          >
-            <option value="">Every Beat, Every Style</option>
-            {genres.map((gener, index) => (
-              <option key={index} value={gener}>
-                {gener}
-              </option>
-            ))}
-          </select>
+
+
+
+<select
+  onChange={(e) => setSelectedGenre(e.target.value)}
+  value={selectedGenre}
+>
+  <option value="">Every Beat, Every Style</option>
+  {genres.length > 0 ? (
+    genres.map((genre, index) => (
+      <option key={index} value={genre}>
+        {genre}
+      </option>
+    ))
+  ) : (
+    <option disabled>Loading genres...</option> // 🔥 Mensaje temporal
+  )}
+</select>
+
 
           <input
             id="search"

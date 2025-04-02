@@ -54,7 +54,7 @@ body {
   background: linear-gradient(to bottom, #f7d95c, #ffa73b);
 }
 .homeImage {
-  margin-top: -20vh;
+  margin-top: -14vh;
   width: auto;
   height: 95vh;
   object-fit: cover;
@@ -230,20 +230,17 @@ button {
   width: 125px;
   border: none;
   border-radius: 22px;
-  padding: 0px;
+  padding: 0px 20px 0px 20px;
   color: #2d3e37;
+  max-width: min-content;
 }
-.littleMenuButtonYellow {
-  font-size: 15px;
-  height: 25px;
-  width: 125px;
-  border: none;
-  border-radius: 22px;
-  padding: 0px;
+.buttonYellow {
   color: #302B3D;
   background-color: #F8E18C;
 }
-
+header button{
+  margin-left: 20px;
+}
 .vinylContent {
   margin-bottom: 20px;
 }

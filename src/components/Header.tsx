@@ -19,7 +19,9 @@ const Header = () => {
             
       </nav>
            <p className='userName'>{user?.displayName && `User: ${user.displayName}`}</p>
-           {user? <button className='littleMenuButtonYellow' onClick={logout}>Log Out</button> : <Link to="/login"><button className='littleMenuButton'>Login</button></Link> }
+           {user? "" : <Link to="/register"><button className='littleMenuButton buttonYellow '>Register</button></Link>}
+           {user? <button className='littleMenuButton buttonYellow ' onClick={logout}>Log Out</button> : <Link to="/login"><button className='littleMenuButton'>Login</button></Link> }
+          
 
     </header>
   );
