@@ -62,9 +62,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       }
     });
   }
-  
-
-  
+    
   const login = (email: string, password: string) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

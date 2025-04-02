@@ -112,7 +112,7 @@ const VinylDetail = () => {
             <strong>Country:</strong> {disco.country || "Unknown"}
           </p>
           <a href={disco.uri} target="_blank" rel="noopener noreferrer">
-            <button className="rightMenuButton">See in Discogs</button>
+            <button className="littleButton">See in Discogs</button>
           </a>
         </div>
       </section>
@@ -136,7 +136,7 @@ const VinylDetail = () => {
                 onChange={(e) => setNewComment(e.target.value)}
                 placeholder="Write..."
               />
-              <button onClick={handleAddComment} className="rightMenuButton">
+              <button onClick={handleAddComment} className="littleButton">
                 Enviar
               </button>
             </div>

@@ -38,6 +38,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+.formSection{
+  height: 77vh;
+}
+
 .homeContentBox {
   margin-left: 40px;
   margin-right: -160px;
@@ -66,6 +70,7 @@ body {
   object-fit: cover;
   align-self: flex-end;
   max-width: 600px;
+  align-self: flex-end;
 }
 .homeLogos {
   padding: 20px 50px 20px 45px;
@@ -209,7 +214,7 @@ button {
   border-radius: 22px;
   padding: 0px;
   color: #2d3e37;
-  margin: 20px 0px 20px 0px;
+
 }
 .generalButtonYellow {
   font-size: 21px;
@@ -224,25 +229,31 @@ button {
   margin: 20px 0px 20px 0px;
   background-color: #F8E18C;
 }
-.littleMenuButton {
+.littleButton {
   font-size: 15px;
   height: 25px;
-  width: 125px;
   border: none;
   border-radius: 22px;
   padding: 0px 20px 0px 20px;
   color: #2d3e37;
-  max-width: min-content;
+  max-width: fit-content;
 }
 .buttonYellow {
   color: #302B3D;
   background-color: #F8E18C;
 }
+.successTextColor{
+  color: #A0C96D;
+}
 header button{
   margin-left: 20px;
 }
+.fomContentBox .generalButton {
+  margin-bottom: 40px;
+
+}
 .vinylContent {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .vinylContent img {
@@ -311,8 +322,11 @@ margin-top: 40px;
   border-radius: 20px 20px 20px 0px;
 }
 
-.comenting .rightMenuButton {
+.comenting .littleButton {
   margin: 20px;
+}
+.vinylContent .littleButton {
+  margin-top: 20px;
 }
 
 .commentBox{
@@ -454,7 +468,8 @@ li {
 /* Grid & Flex----------------------------------------------------------------------*/
 .paddin1 {
 padding-top: 40px;
-padding-bottom: 20px; 
+padding-bottom: 40px; 
+margin-bottom: 40px;
 }
 content {
   margin: 0px 15% 0px 15%;

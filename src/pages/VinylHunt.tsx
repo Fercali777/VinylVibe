@@ -9,23 +9,25 @@ const VinylHunt = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [shouldSearch, setShouldSearch] = useState<boolean>(false);
 
-  const location = useLocation(); // 📌 Para leer la URL
+  const [countries, setCountries] = useState<string[]>([]); // 🔥 Estados para países
+  const [selectedCountry, setSelectedCountry] = useState<string>("");
+
+  const location = useLocation();
   const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP";
 
-  // 📌 Extraer el parámetro de búsqueda desde la URL cuando el componente se monta
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const queryFromURL = params.get("search");
 
     if (queryFromURL) {
       setSearchQuery(queryFromURL);
-      setShouldSearch(true); // Hacer la búsqueda automáticamente
+      setShouldSearch(true);
     }
   }, [location.search]);
 
-   useEffect(() => {
-     setShouldSearch(true); // Activate vefore the user look
-   }, []);
+  useEffect(() => {
+    setShouldSearch(true);
+  }, []);
 
   useEffect(() => {
     if (!shouldSearch) return;
@@ -34,9 +36,8 @@ const VinylHunt = () => {
       try {
         let url = `https://api.discogs.com/database/search?type=release&q=${searchQuery}&per_page=20&page=1`;
 
-        if (selectedGenre) {
-          url += `&genre=${selectedGenre}`;
-        }
+        if (selectedGenre) url += `&genre=${selectedGenre}`;
+        if (selectedCountry) url += `&country=${selectedCountry}`; // 📌 Filtrar por país
 
         const response = await axios.get(url, {
           headers: { Authorization: `Discogs token=${token}` },
@@ -51,7 +52,7 @@ const VinylHunt = () => {
     };
 
     fetchDiscos();
-  }, [shouldSearch]);
+  }, [shouldSearch, selectedCountry]);
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -60,75 +61,114 @@ const VinylHunt = () => {
           `https://api.discogs.com/database/search?type=release&per_page=100&page=1&q=`,
           { headers: { Authorization: `Discogs token=${token}` } }
         );
-  
+
         const genresSet = new Set<string>();
         response.data.results.forEach((result: any) => {
           if (result.genre) {
             result.genre.forEach((genre: string) => genresSet.add(genre));
           }
         });
-  
-        const genresArray = Array.from(genresSet);
-        console.log("Genres fetched:", genresArray); // 🔥 Verifica los datos en consola
-        setGenres(genresArray);
+
+        setGenres(Array.from(genresSet));
       } catch (error) {
         console.error("Error getting genres:", error);
       }
     };
-  
+
     fetchGenres();
+  }, []);
+
+  // 🔥 Nueva función para obtener países
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.discogs.com/database/search?type=release&per_page=100&page=1&q=`,
+          { headers: { Authorization: `Discogs token=${token}` } }
+        );
+
+        const countriesSet = new Set<string>();
+        response.data.results.forEach((result: any) => {
+          if (result.country) {
+            countriesSet.add(result.country);
+          }
+        });
+
+        setCountries(Array.from(countriesSet));
+      } catch (error) {
+        console.error("Error getting countries:", error);
+      }
+    };
+
+    fetchCountries();
   }, []);
 
   return (
     <>
-      <div className="row vibesTexture paddin1">
-        {/* Filtros */}
+      <div className=" vibesTexture paddin1">
+        <div className="container">
+          {/* Filtros */}
+          <div className="col-12 flex justitySpace">
+            <input
+              id="search"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Type the Artist's Name"
+            />
 
+            {/* 🔥 Filtro de Géneros */}
+            <select
+              onChange={(e) => setSelectedGenre(e.target.value)}
+              value={selectedGenre}
+            >
+              <option value="">Every Beat, Every Style</option>
+              {genres.length > 0 ? (
+                genres.map((genre, index) => (
+                  <option key={index} value={genre}>
+                    {genre}
+                  </option>
+                ))
+              ) : (
+                <option disabled>Loading genres...</option>
+              )}
+            </select>
 
+            {/* 🔥 Filtro por País */}
+            <select
+              onChange={(e) => setSelectedCountry(e.target.value)}
+              value={selectedCountry}
+            >
+              <option value="">Worldwide</option>
+              {countries.length > 0 ? (
+                countries.map((country, index) => (
+                  <option key={index} value={country}>
+                    {country}
+                  </option>
+                ))
+              ) : (
+                <option disabled>Loading countries...</option>
+              )}
+            </select>
+            <button
+              className="generalButton"
+              onClick={() => setShouldSearch(true)}
+            >
+              Hunt
+            </button>
+          </div>
 
+          {/* Botón de búsqueda */}
+          <div className="col-12 flex justityCenter">
 
-        
-        <div className="col-12 flex justitySpace">
-
-
-
-<select
-  onChange={(e) => setSelectedGenre(e.target.value)}
-  value={selectedGenre}
->
-  <option value="">Every Beat, Every Style</option>
-  {genres.length > 0 ? (
-    genres.map((genre, index) => (
-      <option key={index} value={genre}>
-        {genre}
-      </option>
-    ))
-  ) : (
-    <option disabled>Loading genres...</option> // 🔥 Mensaje temporal
-  )}
-</select>
-
-
-          <input
-            id="search"
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Type the Artist's Name"
-          />
-        </div>
-
-        {/* Botón de búsqueda */}
-        <div className="col-12 flex justityCenter">
-          <button className="generalButton" onClick={() => setShouldSearch(true)}>
-            Hunt
-          </button>
+          </div>
         </div>
       </div>
 
       {/* Mostrar discos */}
       <div className="container">
         <div className="row">
+          
           {discos.map((disco: any) => (
             <div className="col-3 vinylContent animationDownUp" key={disco.id}>
               <img src={disco.cover_image} alt={disco.title} />
@@ -140,11 +180,16 @@ const VinylHunt = () => {
                   : disco.format || "Unknown"}
               </p>
 
+              <p>
+                <strong>Country:</strong> {disco.country || "Unknown"}
+              </p>
+
               <Link to={`/vinyl/${disco.id}`} className="detail-link">
-                View Details
+                <button className="littleButton">See More</button>
               </Link>
             </div>
           ))}
+          
         </div>
       </div>
     </>
@@ -154,7 +199,7 @@ const VinylHunt = () => {
 export default VinylHunt;
 
 // import { useState, useEffect } from "react";
-// import { Link } from "react-router"; 
+// import { Link } from "react-router";
 // import axios from "axios";
 
 // const VinylHunt = () => {
@@ -164,7 +209,7 @@ export default VinylHunt;
 //   const [searchQuery, setSearchQuery] = useState<string>("");
 //   const [shouldSearch, setShouldSearch] = useState<boolean>(false); // Nuevo estado
 
-//   const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP"; 
+//   const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP";
 
 //   useEffect(() => {
 //     setShouldSearch(true); // Activate vefore the user look
@@ -260,7 +305,7 @@ export default VinylHunt;
 //           </button>
 //         </div>
 //       </div>
-      
+
 //       {/* Mostrar discos */}
 //       <div className="container">
 //       <div className="row">
@@ -287,4 +332,3 @@ export default VinylHunt;
 // };
 
 // export default VinylHunt;
-
