@@ -77,6 +77,8 @@ const VinylDetail = () => {
 
   return (
     <>
+    <div className="backVibes">
+      <div className="container">
       <section className="vinyl-detail row">
         <div className="col detailsImgBox animationGrow">
           <img src={disco.images?.[0]?.uri} alt={disco.title} />
@@ -114,49 +116,55 @@ const VinylDetail = () => {
           </a>
         </div>
       </section>
-      <section className="row">
-        <h2>Groove Talk</h2>
-        <h4>Share thoughts from vinyl lovers.</h4>
-      </section>
-      <section className="comentsSection row">
-      <div className="col">
-        
       </div>
+      </div>
+      <div className="container">
+      <section className="comentsTittel row">
+      <h2>Groove Talk</h2>
+      <h4>Share thoughts from vinyl lovers.</h4>
+      </section>
+      <section className="comentingBox row">
+
         <div className="col">
+          <img src="/img/profilePicture.png" />
+        </div>
+        <div className="col-10 ">
           {user ? (
-            <div>
+            <div className="comenting flex direction-column ">
               <textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Escribe un comentario..."
+                placeholder="Write..."
               />
               <button onClick={handleAddComment} className="rightMenuButton">
                 Enviar
               </button>
             </div>
           ) : (
-            <p>Inicia sesión para comentar.</p>
+            <p>Log in for make your comment.</p>
           )}
         </div>
-
-        {/* Lista de Comentarios */}
+      </section>
+      <section className="comentsList row">
+       
         {comments.length > 0 ? (
           comments.map((comment) => (
-            <div key={comment.id} className="comment">
-              <p>
-                <strong>{comment.userName}</strong> (
-                {new Date(
-                  comment.timestamp.seconds * 1000
-                ).toLocaleDateString()}
-                )
-              </p>
+            <div key={comment.id} className="commentBox">
+                 
+                <h3>{comment.userName}</h3> 
+                <p>{new Date(
+                 comment.timestamp.seconds * 1000
+                ).toLocaleDateString()}</p>
+                
+              
               <p>{comment.comment}</p>
             </div>
           ))
         ) : (
-          <p>No hay comentarios aún.</p>
+          <p>We have not coments yet.</p>
         )}
       </section>
+      </div>
     </>
   );
 };

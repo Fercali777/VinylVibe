@@ -12,6 +12,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   const isUserActive = useUserStatus();
   return (
     <div className="container">{isUserActive ? children : <div className="alertMesage"><h1>Log in, Before you dig!</h1></div>}</div>
+    
   );
 }
 

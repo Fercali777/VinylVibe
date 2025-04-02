@@ -18,9 +18,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<AppRoutes />}>
             <Route path="/" element={<Home />} />
-            <Route path="/vinyl-hunt" element={<ProtectedRoute><VinylHunt /></ProtectedRoute>} />
-            <Route path="/vinyl/:id" element={<ProtectedRoute><VinylDetail /></ProtectedRoute>} />
-            <Route path="/my-spins" element={<MySpins />} />
+            <Route path="/vinyl-hunt" element={<VinylHunt />} />
+            <Route path="/vinyl/:id" element={<VinylDetail />} />
+            <Route path="/my-spins" element={<ProtectedRoute><MySpins /></ProtectedRoute>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>

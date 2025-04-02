@@ -2,8 +2,6 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth } from "../lib/firebase"; 
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from "firebase/auth";
 import { updateProfile } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-
 
 console.log('auth:', auth); 
 

@@ -74,6 +74,14 @@ body {
   padding: 20px 50px 20px 45px;
   background-color: rgba(33, 44, 53, 0.9);
 }
+.searchAreaHome{
+  background-color: #F8E18C !important;
+  border-radius: 20px 20px 20px 20px;
+  max-width: min-content;
+}
+.searchAreaHome img {
+margin:7px 14px 7px 10px;
+}
 input,
 input::selection,
 select {
@@ -100,27 +108,20 @@ input:focus, :valid, {
   max-width: 400px;
 
 }
-input.form-control {
 
+textarea {
+  text-align: left;
   background-color: #f5f4d9 !important;
   border: none;
   border-radius: 20px 20px 20px 20px;
-  padding: 8px 30px 8px 30px;
+  padding: 20px 20px 20px 20px;
   color: #978653 !important;
-  font-weight: 800;
-  max-width: 400px;
-
-}
-input:placeholder-shown {
-
-  background-color: #f5f4d9 !important;
-  border: none;
-  border-radius: 20px 20px 20px 20px;
-  padding: 8px 30px 8px 30px;
-  color: #978653 !important;
-  font-weight: 800;
-  max-width: 400px;
-
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  min-width: 400px;
+  min-height: 100px;
 }
 
 .direction-column input {
@@ -137,13 +138,9 @@ select {
   padding-right: 50px;
 }
 
-.justitySpace {
-  justify-content: space-around;
-}
 
-.justityCenter {
-  justify-content: center;
-}
+
+
 
 /* Content------------------------------------------------------ */
 
@@ -178,6 +175,9 @@ footer {
   font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
   font-weight: 800;
 }
+.userName{
+margin-right: 20px;
+}
 button {
   font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
   font-weight: 800;
@@ -192,8 +192,10 @@ button {
 
 .vibesTexture {
   background-image: url("/img/vibes.png");
-  margin-bottom: 50px;
-  padding-top: 20px;
+  background-repeat: repeat-x; /* Solo repetir en horizontal */
+  background-position: center center; /* Centrar verticalmente */
+  background-size: auto; /* Mantener el tamaño original */
+
 }
 
 .generalButton {
@@ -221,7 +223,7 @@ button {
   margin: 20px 0px 20px 0px;
   background-color: #F8E18C;
 }
-.rightMenuButton {
+.littleMenuButton {
   font-size: 15px;
   height: 25px;
   width: 125px;
@@ -229,6 +231,16 @@ button {
   border-radius: 22px;
   padding: 0px;
   color: #2d3e37;
+}
+.littleMenuButtonYellow {
+  font-size: 15px;
+  height: 25px;
+  width: 125px;
+  border: none;
+  border-radius: 22px;
+  padding: 0px;
+  color: #302B3D;
+  background-color: #F8E18C;
 }
 
 .vinylContent {
@@ -246,7 +258,7 @@ button {
   padding: 50px;
 }
 .detailsImgBox img {
-  width: 100%;
+  width: 80%;
   border-radius: 10px;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
 }
@@ -278,9 +290,45 @@ button {
   margin-top: 20px;
 }
 
-
 .fomContentBox form{
 margin-top: 40px;
+}
+
+.comentsTittel {
+  margin: 80px;
+}
+
+.comentsTittel h2,
+.comentsTittel h4 {
+  text-align: center;
+}
+
+.comenting {
+  background-color: #212C35 ;
+  border-radius: 20px 20px 20px 20px;
+  margin-bottom: 40px;
+}
+
+.comenting textarea {
+  border-radius: 20px 20px 20px 0px;
+}
+
+.comenting .rightMenuButton {
+  margin: 20px;
+}
+
+.commentBox{
+  background-color:rgba(33, 44, 53, 0.5);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #726153;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.commentBox  {
+
 }
 
 .alertMesage {
@@ -406,7 +454,10 @@ li {
 }
 
 /* Grid & Flex----------------------------------------------------------------------*/
-
+.paddin1 {
+padding-top: 40px;
+padding-bottom: 20px; 
+}
 content {
   margin: 0px 15% 0px 15%;
 }
@@ -424,6 +475,12 @@ content {
 }
 .align-items-center {
   align-items: center;
+}
+.justitySpace {
+  justify-content: space-around;
+}
+.justityCenter {
+  justify-content: center;
 }
 .gap1 {
   gap: 20px;

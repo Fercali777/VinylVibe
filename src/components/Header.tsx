@@ -6,7 +6,6 @@ const Header = () => {
   
    const { user, login, logout } = useContext(AuthContext);
 
-
   return (
     <header className='flex'>
       <div className='logo'>
@@ -17,9 +16,10 @@ const Header = () => {
             <Link to="/my-spins">My Spins</Link> {/* link */}
             <Link to="/login">login</Link> {/* link */}
             <Link to="/register">Register</Link> {/* link */}
+            
       </nav>
-
-           {user? <button className='rightMenuButton' onClick={logout}>Log Out</button> : <Link className='rightMenuButton' to="/login"><button className='rightMenuButton'>Login</button></Link> }
+           <p className='userName'>{user?.displayName && `User: ${user.displayName}`}</p>
+           {user? <button className='littleMenuButtonYellow' onClick={logout}>Log Out</button> : <Link to="/login"><button className='littleMenuButton'>Login</button></Link> }
 
     </header>
   );
