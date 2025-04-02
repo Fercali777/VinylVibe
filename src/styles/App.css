@@ -81,6 +81,7 @@ body {
 }
 .searchAreaHome img {
 margin:7px 14px 7px 10px;
+cursor: pointer;
 }
 input,
 input::selection,
