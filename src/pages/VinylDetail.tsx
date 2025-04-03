@@ -73,97 +73,133 @@ const VinylDetail = () => {
     }
   };
 
-  if (!disco) return <p>Loading...</p>;
+  if (!disco) return <p className="loading">Loading...</p>;
 
   return (
     <>
-    <div className="backVibes">
-      <div className="container">
-      <section className="vinyl-detail row">
-        <div className="col detailsImgBox animationGrow">
-          <img src={disco.images?.[0]?.uri} alt={disco.title} />
-        </div>
-
-        <div className="col detailsTextBox animationGrow">
-          <h2>{disco.title}</h2>
-          <p>
-            <strong>Artist:</strong>{" "}
-            {disco.artists?.map((artist: any) => artist.name).join(", ")}
-          </p>
-          <p>
-            <strong>Label:</strong>{" "}
-            {disco.labels?.map((label: any) => label.name).join(", ") ||
-              "Unknown"}
-          </p>
-          <p>
-            <strong>Year:</strong> {disco.year || "Unknown"}
-          </p>
-          <p>
-            <strong>Genre:</strong> {disco.genres?.join(", ") || "Unknown"}
-          </p>
-          <p>
-            <strong>Style:</strong> {disco.styles?.join(", ") || "Unknown"}
-          </p>
-          <p>
-            <strong>Format:</strong>{" "}
-            {disco.formats?.map((format: any) => format.name).join(", ")}
-          </p>
-          <p>
-            <strong>Country:</strong> {disco.country || "Unknown"}
-          </p>
-          <a href={disco.uri} target="_blank" rel="noopener noreferrer">
-            <button className="littleButton">See in Discogs</button>
-          </a>
-        </div>
-      </section>
-      </div>
-      </div>
-      <div className="container">
-      <section className="comentsTittel row">
-      <h2>Groove Talk</h2>
-      <h4>Share thoughts from vinyl lovers.</h4>
-      </section>
-      <section className="comentingBox row">
-
-        <div className="col">
-          <img src="/img/profilePicture.png" />
-        </div>
-        <div className="col-10 ">
-          {user ? (
-            <div className="comenting flex direction-column ">
-              <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Write..."
-              />
-              <button onClick={handleAddComment} className="littleButton">
-                Enviar
-              </button>
+      <div className="vibesTexture">
+        <div className="container">
+          <section className="vinyl-detail row">
+            <div className="col detailsImgBox animationGrow">
+              <img src={disco.images?.[0]?.uri} alt={disco.title} />
             </div>
+
+            <div className="col detailsTextBox animationGrow">
+              <h2>{disco.title}</h2>
+              <p>
+                <strong>Artist:</strong>{" "}
+                {disco.artists?.map((artist: any) => artist.name).join(", ")}
+              </p>
+              <p>
+                <strong>Label:</strong>{" "}
+                {disco.labels?.map((label: any) => label.name).join(", ") ||
+                  "Unknown"}
+              </p>
+              <p>
+                <strong>Year:</strong> {disco.year || "Unknown"}
+              </p>
+              <p>
+                <strong>Genre:</strong> {disco.genres?.join(", ") || "Unknown"}
+              </p>
+              <p>
+                <strong>Style:</strong> {disco.styles?.join(", ") || "Unknown"}
+              </p>
+              <p>
+                <strong>Format:</strong>{" "}
+                {disco.formats?.map((format: any) => format.name).join(", ")}
+              </p>
+              <p>
+                <strong>Country:</strong> {disco.country || "Unknown"}
+              </p>
+              <a href={disco.uri} target="_blank" rel="noopener noreferrer">
+                <button className="littleButton">See in Discogs</button>
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div className="container">
+        <section className="comentsTittel row">
+          <h2>Groove Talk</h2>
+          <h4>Share thoughts from vinyl lovers.</h4>
+        </section>
+        <section className="comentingBox row">
+        {user ? ( <>
+          <div className="col imgCommentsBox">
+        
+            <img src="/img/profilePicture.png" />
+            
+          </div> </>):  ( <>
+          <div className="col imgCommentsBox">
+          <img src="/img/profilePicture-null.png" />
+           
+            
+          </div> </>)
+
+}
+          <div className="col-10 ">
+            {user ? (
+              <div className="comenting flex direction-column ">
+                <textarea
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder="Write..."
+                />
+                <button onClick={handleAddComment} className="littleButton">
+                  Enviar
+                </button>
+              </div>
+            ) : (
+              <div className="comentBoxInvisible flex direction-column" >
+                <div>Log in for make your comment.</div>
+                <div><a href="/login"><button className='littleButton'>Login</button></a> <a href="/register"><button className='littleButton buttonYellow '>Register</button></a></div>
+                <div className="invisibleButon"></div>
+              </div>
+            )}
+          </div>
+        </section>
+        <section className="comentsList row">
+          {comments.length > 0 ? (
+            comments.map((comment) => (
+              <div key={comment.id} className="commentBox">
+                <h3>{comment.userName}</h3>
+                <p>
+                  {new Date(
+                    comment.timestamp.seconds * 1000
+                  ).toLocaleDateString()}
+                </p>
+
+                <p>{comment.comment}</p>
+              </div>
+            ))
           ) : (
-            <p>Log in for make your comment.</p>
+
+
+
+
+
+
+
+<div className="comentBoxInvisible comentEmptyBoxInvisible" >
+
+We have not coments yet.
+
+</div>
+
+
+
+
+
+
+           
+
+
+
+
+
+
           )}
-        </div>
-      </section>
-      <section className="comentsList row">
-       
-        {comments.length > 0 ? (
-          comments.map((comment) => (
-            <div key={comment.id} className="commentBox">
-                 
-                <h3>{comment.userName}</h3> 
-                <p>{new Date(
-                 comment.timestamp.seconds * 1000
-                ).toLocaleDateString()}</p>
-                
-              
-              <p>{comment.comment}</p>
-            </div>
-          ))
-        ) : (
-          <p>We have not coments yet.</p>
-        )}
-      </section>
+        </section>
       </div>
     </>
   );

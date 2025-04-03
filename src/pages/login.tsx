@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { GoBackButton } from "../components/Buttons";
 
 function Login() {
-  const { user, register, login } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPW, setLoginPW] = useState("");
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -22,25 +22,31 @@ function Login() {
   };
 
   return (
+
+
+
+
+
+
+
+    
     <div className="content">
       <section className="flex formSection">
         <div className="fomContentBox">
-          
-
-          <form className="flex direction-column" onSubmit={handleLogin}>
             {user ?  
-            
-            <>
+           ( <>
             <h2>Login successful! </h2>
             <h4>Your vinyl adventure starts now</h4>
             <GoBackButton/>
 
             
-            </>
+            </>)
             
-            : (
-              <>
+            : 
+              (<>
+              
               <h2>Log In & Keep the Music Spinning</h2>
+              <form className="flex direction-column" onSubmit={handleLogin}>
                 <input
                   placeholder="enter email"
                   type="email"
@@ -63,9 +69,9 @@ function Login() {
             <Link to="/register">
               <button className="generalButtonYellow">Register</button>
             </Link>
-
-              </>
-            ) }
+            </form>
+              </>)
+             }
 
             {/* {successMessage && (
               <h4 className="success-message successTextColor">
@@ -79,7 +85,7 @@ function Login() {
             )} */}
 
             
-          </form>
+          
         </div>
         <img
           className="formImage"

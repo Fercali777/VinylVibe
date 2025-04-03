@@ -6,8 +6,8 @@ export const GoBackButton = () => {
   };
 
   return (
-    <button onClick={handleGoBack} className="generalButton">
-      Go Back
+    <button onClick={handleGoBack} className="generalButton  margin1">
+      Back to Action
     </button>
   );
 };

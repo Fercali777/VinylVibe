@@ -17,6 +17,10 @@ const Header = () => {
 
             
       </nav>
+ 
+
+
+
            <p className='userName'>{user?.displayName && `Welcome ${user.displayName}!`}</p>
            {user? "" : <Link to="/register"><button className='littleButton buttonYellow '>Register</button></Link>}
            {user? <button className='littleButton buttonYellow ' onClick={logout}>Log Out</button> : <Link to="/login"><button className='littleButton'>Login</button></Link> }
