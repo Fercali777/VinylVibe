@@ -641,15 +641,17 @@ content {
 /* Mobile devices -------------------- */
 
 @media (max-width: 768px) {
+  input, input::selection, select {
+    max-width: 200px;
+}
   h1 {
     all: unset;
     font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
     font-weight: 800;
-    font-size: 60px;
+    font-size: 50px;
     line-height: 62px;
     color: #fffaae;
   }
- 
   h2 {
     all: unset;
     font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
@@ -678,6 +680,17 @@ content {
     height: auto;
     margin: 40px 0px 40px 0px;
   }
+
+  .homeText {
+    padding: 35px 0px 35px 0px;
+    background: transparent;
+  }
+  .homeTextUnder {
+    background-color: transparent;
+}
+  .homeText h1 {
+    color: #f7d95c;
+  }
   .userName {
     margin-right: 0px;
     margin-bottom: 10px;
@@ -696,8 +709,6 @@ content {
   .homeContentBox {
     margin-left: 0px;
     margin-right: 0px;
-  }
-  .homeContentBox {
     max-width: 400px;
   }
   .homeText {
@@ -713,8 +724,8 @@ content {
     margin-top: -2vh;
     margin-bottom: -60px;
     display: initial;
+    width: 200px;
   }
-
   .imgCommentsBox img {
     display: none;
   }
@@ -740,7 +751,6 @@ content {
   header {
     flex-direction: column;
   }
-
   .grid-2-col {
     display: grid;
     grid-template-columns: 1fr;
