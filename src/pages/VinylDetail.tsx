@@ -176,7 +176,7 @@ const VinylDetail = () => {
         <section ref={commentsRef}  className="comentsList row">
           {comments.length > 0 ? (
             comments.map((comment) => (
-              <div key={comment.id} className="commentBox">
+              <div key={comment.id} className="commentBox animationUpDown">
                 <h3>{comment.userName}</h3>
                 <p>
                   {new Date(
