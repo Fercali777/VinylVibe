@@ -7,29 +7,23 @@ function Login() {
   const { user, login } = useContext(AuthContext);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPW, setLoginPW] = useState("");
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  
+  // const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
       await login(loginEmail, loginPW);
-      setSuccessMessage("Successfully logged in! ");
+      // setSuccessMessage("Successfully logged in! ");
     } catch (error) {
       console.error("Login failed:", error);
-      setErrorMessage("Successfully logged in! ");
+      // setErrorMessage("Successfully logged in! ");
     }
   };
 
   return (
 
-
-
-
-
-
-
-    
     <div className="content">
       <section className="flex formSection">
         <div className="fomContentBox">

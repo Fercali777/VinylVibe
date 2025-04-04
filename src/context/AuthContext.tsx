@@ -9,7 +9,7 @@ console.log('auth:', auth);
 type AuthContextType = {
   user: User | null;
   login: (email: string, password: string) => void;
-  register: (email: string, password: string) => void;
+  register: (email: string, password: string, name:string) => void;
   logout: () => void;
 };
 //?6. Define type for provider's props
@@ -71,10 +71,10 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         setUser(user);
         // ...
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+      // .catch((error) => {
+      //   // const errorCode = error.code;
+      //   // const errorMessage = error.message;
+      // });
   };
 
   const register = (email: string, password: string, name: string) => {

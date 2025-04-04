@@ -8,14 +8,14 @@ function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPW, setRegisterPW] = useState("");
   const [registerName, setRegisterName] = useState("");
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [successMessage] = useState<string | null>(null);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     try {
       await register(registerEmail, registerPW, registerName);
-      setIsRegistered(true); // 🔥 Oculta el formulario tras el registro
+      setIsRegistered(true); // Oculta el formulario tras el registro
     } catch (error) {
       console.error("Registration failed:", error);
     }

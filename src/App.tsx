@@ -9,7 +9,7 @@ import "./styles/App.css";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/login";
-import Register from "./pages/register";
+
 
 const App = () => {
   return (

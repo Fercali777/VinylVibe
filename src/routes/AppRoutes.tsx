@@ -1,22 +1,22 @@
-import { Outlet, useLocation } from "react-router"; // Importa useLocation
+import { Outlet, useLocation } from "react-router"; 
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const AppRoutes = () => {
-  const location = useLocation(); // Obtiene la ruta actual
+  const location = useLocation(); 
 
   useEffect(() => {
     if (location.pathname === "/") {
-      document.body.classList.add("backHome"); // Agrega clase
+      document.body.classList.add("backHome");
     } else {
-      document.body.classList.remove("backHome"); // Quita clase si no está en Home
+      document.body.classList.remove("backHome");
     }
 
     return () => {
-      document.body.classList.remove("backHome"); // Asegura que se elimine al salir
+      document.body.classList.remove("backHome"); 
     };
-  }, [location.pathname]); // Se ejecuta cada vez que cambia la ruta
+  }, [location.pathname]); 
 
   return (
     <>

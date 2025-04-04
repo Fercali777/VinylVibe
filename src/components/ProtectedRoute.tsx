@@ -1,11 +1,11 @@
-import { ReactNode, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { ReactNode } from "react";
+// import { AuthContext } from "../context/AuthContext";
 import useUserStatus from "../utils/useUserStatus";
 type ProtectedRouteProps = {
   children: ReactNode;
-};
+};npm run 
 function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   //   const isUserLoggedin = user ? true : false;
   const isUserActive = useUserStatus();
