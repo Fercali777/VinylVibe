@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import useUserStatus from "../utils/useUserStatus";
 type ProtectedRouteProps = {
   children: ReactNode;
-};npm run 
+};
 function ProtectedRoute({ children }: ProtectedRouteProps) {
   // const { user } = useContext(AuthContext);
 
