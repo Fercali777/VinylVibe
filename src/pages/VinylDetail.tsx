@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import { db } from "../lib/firebase";
@@ -17,6 +17,7 @@ const VinylDetail = () => {
   const [comments, setComments] = useState<any[]>([]);
   const [newComment, setNewComment] = useState("");
   const { user } = useContext(AuthContext);
+  const commentsRef = useRef<HTMLDivElement>(null); //for the autoscroll
   const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP";
 
   useEffect(() => {
@@ -68,6 +69,11 @@ const VinylDetail = () => {
         timestamp: new Date(),
       });
       setNewComment(""); // Limpiar el input
+
+      // Hacer scroll al área de comentarios
+      setTimeout(() => {
+        commentsRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
@@ -124,19 +130,19 @@ const VinylDetail = () => {
           <h4>Share thoughts from vinyl lovers.</h4>
         </section>
         <section className="comentingBox row">
-        {user ? ( <>
-          <div className="col-md-2 col-sm-12 col-12 imgCommentsBox">
-        
-            <img src="/img/profilePicture.png" />
-            
-          </div> </>):  ( <>
-          <div className="col imgCommentsBox">
-          <img src="/img/profilePicture-null.png" />
-           
-            
-          </div> </>)
-
-}
+          {user ? (
+            <>
+              <div className="col-md-2 col-sm-12 col-12 imgCommentsBox">
+                <img src="/img/profilePicture.png" />
+              </div>{" "}
+            </>
+          ) : (
+            <>
+              <div className="col imgCommentsBox">
+                <img src="/img/profilePicture-null.png" />
+              </div>{" "}
+            </>
+          )}
           <div className=" col-lg-10 col-md-12 col-sm-12 col-12 ">
             {user ? (
               <div className="comenting flex direction-column ">
@@ -146,19 +152,28 @@ const VinylDetail = () => {
                   placeholder="Write..."
                 />
                 <button onClick={handleAddComment} className="littleButton">
-                  Enviar
+                  Post
                 </button>
               </div>
             ) : (
-              <div className="comentBoxInvisible flex direction-column" >
+              <div className="comentBoxInvisible flex direction-column">
                 <div>Log in for make your comment.</div>
-                <div><a href="/login"><button className='littleButton'>Login</button></a> <a href="/register"><button className='littleButton buttonYellow '>Register</button></a></div>
+                <div>
+                  <a href="/login">
+                    <button className="littleButton">Login</button>
+                  </a>{" "}
+                  <a href="/register">
+                    <button className="littleButton buttonYellow ">
+                      Register
+                    </button>
+                  </a>
+                </div>
                 <div className="invisibleButon"></div>
               </div>
             )}
           </div>
         </section>
-        <section className="comentsList row">
+        <section ref={commentsRef}  className="comentsList row">
           {comments.length > 0 ? (
             comments.map((comment) => (
               <div key={comment.id} className="commentBox">
@@ -173,14 +188,9 @@ const VinylDetail = () => {
               </div>
             ))
           ) : (
-
-<div className="comentBoxInvisible comentEmptyBoxInvisible" >
-
-We have not coments yet.
-
-</div>
-
-
+            <div className="comentBoxInvisible comentEmptyBoxInvisible">
+              We have not coments yet.
+            </div>
           )}
         </section>
       </div>
@@ -189,4 +199,3 @@ We have not coments yet.
 };
 
 export default VinylDetail;
-

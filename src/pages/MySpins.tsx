@@ -77,7 +77,7 @@ const MySpins = () => {
     fetchGenres();
   }, []);
 
-  // 🔥 Nueva función para obtener países
+  //  function countries
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -133,7 +133,7 @@ const MySpins = () => {
               )}
             </select>
 
-            {/*  Filter por Country */}
+            {/*  Filter Country */}
             <select
               onChange={(e) => setSelectedCountry(e.target.value)}
               value={selectedCountry}
@@ -195,7 +195,7 @@ const MySpins = () => {
   );
 };
 
+export default MySpins;
 
 
-  
-  export default MySpins;
+

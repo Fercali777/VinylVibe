@@ -10,9 +10,24 @@ const VinylHunt = () => {
   const [shouldSearch, setShouldSearch] = useState<boolean>(false);
   const [countries, setCountries] = useState<string[]>([]); 
   const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);//for the animation
 
   const location = useLocation();
   const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP";
+
+  // animation steps
+  useEffect(() => {
+    if (discos.length === 0) return; 
+  
+    setVisibleItems([]);
+  
+    discos.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleItems((prev) => [...prev, index]);
+      }, index * 300); 
+    });
+  }, [discos]);
+  
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -77,7 +92,7 @@ const VinylHunt = () => {
     fetchGenres();
   }, []);
 
-  //  function countries
+  //  Countries
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -133,7 +148,7 @@ const VinylHunt = () => {
               )}
             </select>
 
-            {/*  Filter Country */}
+            {/*  Filter por Country */}
             <select
               onChange={(e) => setSelectedCountry(e.target.value)}
               value={selectedCountry}
@@ -168,26 +183,31 @@ const VinylHunt = () => {
       <div className="container">
         <div className="row">
           
-          {discos.map((disco: any) => (
-            <div className="col-lg-3 col-md-4 col-sm-6 col-6 vinylContent animationDownUp" key={disco.id}>
-              <img src={disco.cover_image} alt={disco.title} />
-              <h5>{disco.title}</h5>
-              <p>
-                <strong>Format:</strong>{" "}
-                {Array.isArray(disco.format)
-                  ? disco.format.join(", ")
-                  : disco.format || "Unknown"}
-              </p>
+        {discos.map((disco: any, index: number) => (
+  <div
+    className={`col-lg-3 col-md-4 col-sm-6 col-6 vinylContent ${
+      visibleItems.includes(index) ? "animationDownUp" : ""
+    }`}
+    key={disco.id}
+  >
+    <img src={disco.cover_image} alt={disco.title} />
+    <h5>{disco.title}</h5>
+    <p>
+      <strong>Format:</strong>{" "}
+      {Array.isArray(disco.format)
+        ? disco.format.join(", ")
+        : disco.format || "Unknown"}
+    </p>
 
-              <p>
-                <strong>Country:</strong> {disco.country || "Unknown"}
-              </p>
+    <p>
+      <strong>Country:</strong> {disco.country || "Unknown"}
+    </p>
 
-              <Link to={`/vinyl/${disco.id}`} className="detail-link">
-                <button className="littleButton">See More</button>
-              </Link>
-            </div>
-          ))}
+    <Link to={`/vinyl/${disco.id}`} className="detail-link">
+      <button className="littleButton">See More</button>
+    </Link>
+  </div>
+))}
           
         </div>
       </div>
