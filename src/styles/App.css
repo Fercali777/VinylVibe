@@ -8,7 +8,7 @@ div {
   display: block;
   unicode-bidi: isolate;
 }
-#root {
+*/ #root {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -34,13 +34,14 @@ body {
   margin: 0px;
 }
 .loading {
-text-align: center;
+  text-align: center;
 }
-.homeSection, .formSection{
+.homeSection,
+.formSection {
   justify-content: center;
   align-items: center;
 }
-.formSection{
+.formSection {
   height: 77vh;
 }
 .homeContentBox {
@@ -50,7 +51,7 @@ text-align: center;
 }
 .fomContentBox {
   margin-left: 40px;
-  margin-right: -40px ;
+  margin-right: -40px;
   max-width: 650px;
 }
 .homeText {
@@ -64,7 +65,14 @@ text-align: center;
   object-fit: cover;
   align-self: flex-end;
 }
+.homeImageS {
+  margin-top: -2vh;
+  display: none;
+}
+.boxHeadMov{
+  width: 100%;
 
+}
 .formImage {
   height: ;
   object-fit: cover;
@@ -79,14 +87,14 @@ text-align: center;
   padding: 20px 50px 20px 45px;
   background-color: rgba(33, 44, 53, 0.9);
 }
-.searchAreaHome{
-  background-color: #F8E18C !important;
+.searchAreaHome {
+  background-color: #f8e18c !important;
   border-radius: 20px 20px 20px 20px;
   max-width: min-content;
 }
 .searchAreaHome img {
-margin:7px 14px 7px 10px;
-cursor: pointer;
+  margin: 7px 14px 7px 10px;
+  cursor: pointer;
 }
 input,
 input::selection,
@@ -103,8 +111,7 @@ select {
   font-weight: 800;
   max-width: 400px;
 }
-input:focus, :valid, {
-
+input:focus {
   background-color: #f5f4d9 !important;
   border: none;
   border-radius: 20px 20px 20px 20px;
@@ -112,7 +119,6 @@ input:focus, :valid, {
   color: #978653 !important;
   font-weight: 800;
   max-width: 400px;
-
 }
 
 textarea {
@@ -126,12 +132,12 @@ textarea {
   font-family: "Inter", sans-serif;
   font-style: italic;
   font-weight: 400;
-  min-width: 400px;
+
   min-height: 100px;
 }
 
 .direction-column input {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 select {
@@ -143,10 +149,6 @@ select {
   background-repeat: no-repeat;
   padding-right: 50px;
 }
-
-
-
-
 
 /* Content------------------------------------------------------ */
 
@@ -181,8 +183,8 @@ footer {
   font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
   font-weight: 800;
 }
-.userName{
-margin-right: 20px;
+.userName {
+  margin-right: 20px;
 }
 button {
   font-family: "Inter", "Calibri", "Helvetica Neue", sans-serif;
@@ -193,18 +195,21 @@ button {
 }
 .alertMesage h1 {
   text-align: center;
-  color: ;
 }
 
 .vibesTexture {
   background-image: url("/img/vibes.png");
-  background-repeat: repeat-x; 
-  background-position: center center; 
-  background-size: auto; 
+  background-repeat: repeat-x;
+  background-position: center center;
+  background-size: auto;
+}
+
+.filtersBox {
+  justify-content: space-around;
 }
 .comentBoxInvisible {
   text-align: center;
-  border: #978653 ;
+  border: #978653;
   border-style: dotted;
   padding: 20px 20px 20px 20px;
   color: #978653 !important;
@@ -212,7 +217,6 @@ button {
   font-family: "Inter", sans-serif;
   font-style: italic;
   font-weight: 400;
-  min-width: 400px;
   border-radius: 20px 20px 20px 0px;
   margin-bottom: 40px;
 }
@@ -221,22 +225,20 @@ button {
 }
 .comentBoxInvisible button {
   margin-top: 10px;
-
 }
-.invisibleButon{
-  border: #978653 ;
+.invisibleButon {
+  border: #978653;
   border-style: dotted;
   border-radius: 20px 20px 20px 20px;
-height: 40px;
-width: 100px;
-float: right;
+  height: 40px;
+  width: 100px;
+  float: right;
 }
 .imgCommentsBox {
-
+  text-align: center;
 }
 .imgCommentsBox img {
   width: 140px;
-
 }
 
 .generalButton {
@@ -246,7 +248,7 @@ float: right;
   max-width: fit-content;
   border: none;
   border-radius: 22px;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 40px 0px 40px;
   color: #2d3e37;
 }
 .generalButtonYellow {
@@ -260,7 +262,7 @@ float: right;
   padding: 0px;
   color: #2d3e37;
   margin: 20px 0px 20px 0px;
-  background-color: #F8E18C;
+  background-color: #f8e18c;
 }
 .littleButton {
   font-size: 15px;
@@ -270,20 +272,21 @@ float: right;
   padding: 0px 20px 0px 20px;
   color: #2d3e37;
   max-width: fit-content;
+  position: relative;
+  z-index: 10000;
 }
 .buttonYellow {
-  color: #302B3D;
-  background-color: #F8E18C;
+  color: #302b3d;
+  background-color: #f8e18c;
 }
-.successTextColor{
-  color: #A0C96D;
+.successTextColor {
+  color: #a0c96d;
 }
-header button{
+header button {
   margin-left: 20px;
 }
 .fomContentBox .generalButton {
   margin-bottom: 40px;
-
 }
 .vinylContent {
   margin-bottom: 40px;
@@ -298,6 +301,7 @@ header button{
 
 .detailsImgBox {
   padding: 50px;
+  text-align: center;
 }
 .detailsImgBox img {
   width: 80%;
@@ -332,12 +336,12 @@ header button{
   margin-top: 20px;
 }
 
-.fomContentBox form{
-margin-top: 40px;
+.fomContentBox form {
+  margin-top: 40px;
 }
 
 .comentsTittel {
-  margin: 80px;
+  margin: 80px 0px 80px 0px;
 }
 
 .comentsTittel h2,
@@ -346,7 +350,7 @@ margin-top: 40px;
 }
 
 .comenting {
-  background-color: #212C35 ;
+  background-color: #212c35;
   border-radius: 20px 20px 20px 20px;
   margin-bottom: 40px;
 }
@@ -362,8 +366,8 @@ margin-top: 40px;
   margin-top: 20px;
 }
 
-.commentBox{
-  background-color:rgba(33, 44, 53, 0.5);
+.commentBox {
+  background-color: rgba(33, 44, 53, 0.5);
   padding: 20px;
   margin-bottom: 20px;
   border-style: solid;
@@ -372,14 +376,15 @@ margin-top: 40px;
   border-radius: 20px 20px 20px 20px;
 }
 
-.commentBox  {
-
+.commentBox {
 }
 
 .alertMesage {
+  height: 80vh ;
 }
 
 footer img {
+  margin: 10px 0px 0px 0px;
 }
 
 /* Fonts ---------------------------------------------------------------------------*/
@@ -396,7 +401,6 @@ h1 {
   all: unset;
   font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
   font-weight: 800;
-
   font-size: 90px;
   line-height: 92px;
 }
@@ -480,18 +484,18 @@ li {
   0% {
     transform: translateY(5px);
     opacity: 0;
-    visibility: hidden; 
+    visibility: hidden;
   }
   100% {
     transform: translateY(0);
     opacity: 1;
-    visibility: visible; 
+    visibility: visible;
   }
 }
 
 .vinylContent {
-  opacity: 0; 
-  visibility: hidden; 
+  opacity: 0;
+  visibility: hidden;
 }
 
 .animationDownUp {
@@ -500,14 +504,14 @@ li {
 
 /* Grid & Flex----------------------------------------------------------------------*/
 .paddin1 {
-padding-top: 40px;
-padding-bottom: 40px; 
-margin-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
 }
-.margin1{
+.margin1 {
   margin: 20px 20px 20px 0px;
 }
-.margin2{
+.margin2 {
   margin: 40px 40px 40px 0px;
 }
 content {
@@ -534,6 +538,7 @@ content {
 .justityCenter {
   justify-content: center;
 }
+
 .gap1 {
   gap: 20px;
 }
@@ -579,6 +584,18 @@ content {
 }
 /* Laptops and Small Screens ------------ */
 @media (max-width: 1025px) {
+  .fomContentBox {
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 650px;
+  }
+  .formImage {
+    display: none;
+  }
+
+  .imgCommentsBox img {
+    display: none;
+  }
   content {
     margin: 0px 5% 0px 5%;
   }
@@ -606,7 +623,97 @@ content {
 }
 
 /* Mobile devices -------------------- */
+
 @media (max-width: 768px) {
+  h1 {
+    all: unset;
+    font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 68px;
+    color: #fffaae;
+  }
+
+  h2 {
+    all: unset;
+    font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 41px;
+    color: #fffaae;
+  }
+  h4 {
+    all: unset;
+    font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #fffaae;
+  }
+  .mainMenu {
+
+    margin: 20px 0px 20px 0px;
+}
+  .alertMesage {
+    height: auto ;
+    margin: 40px 0px 40px 0px;
+  }
+  .userName {
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+  .formSection {
+    height: auto;
+    text-align: center;
+  }
+  .fomContentBox form {
+    margin-top: 60px;
+    align-items: center;
+  }
+  .homeSection {
+    flex-direction: column;
+  }
+  .homeContentBox {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .homeContentBox {
+    max-width: 400px;
+  }
+  .homeText {
+    padding: 35px 30px 35px 30px;
+}
+.homeTextUnder {
+  padding: 20px 0px 20px 0px;
+}
+  .homeImage {
+    display: none;
+  }
+  .homeImageS {
+    margin-top: -2vh;
+    margin-bottom: -60px;
+    display: initial;
+  }
+
+  .imgCommentsBox img {
+    display: none;
+  }
+  .homeLogos {
+    display: none;
+  }
+  footer {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+  .filtersBox {
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+  }
+  .filtersBox * {
+    margin-bottom: 20px;
+  }
   .content {
     margin: 0px 20px 60px 20px;
   }

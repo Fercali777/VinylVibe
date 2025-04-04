@@ -14,10 +14,18 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
       {isUserActive ? (
         children
       ) : (
-        <div className="alertMesage">
+        <div className="alertMesage  justityCenter alertMesage flex direction-column ">
           <h1>Log in, Before you dig!</h1>
-          <div><a href="/login"><button className='generalButton margin1'>Login</button></a> <a href="/register"><button className='generalButton buttonYellow  margin1'>Register</button></a></div>
-               
+          <div className="flex justityCenter">
+            <a href="/login">
+              <button className="generalButton margin1">Login</button>
+            </a>{" "}
+            <a href="/register">
+              <button className="generalButton buttonYellow  margin1">
+                Register
+              </button>
+            </a>
+          </div>
         </div>
       )}
     </div>

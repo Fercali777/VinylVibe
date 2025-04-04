@@ -6,7 +6,7 @@ const Footer = () => {
 
       <img width="50" src='/img/Logo.png'/>
       <p>© 2025 Vinyl Hunt. All rights reserved.</p>
-      <img width="250" src='/img/logos.png'/>
+      <img src='/img/logos.png'/>
 
 
     </footer>
