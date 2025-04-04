@@ -124,12 +124,12 @@ const VinylDetail = () => {
           </section>
         </div>
       </div>
-      <div className="container">
+      <div ref={commentsRef} className="container">
         <section className="comentsTittel row">
           <h2>Groove Talk</h2>
           <h4>Share thoughts from vinyl lovers.</h4>
         </section>
-        <section className="comentingBox row">
+        <section  className="comentingBox row">
           {user ? (
             <>
               <div className="col-md-2 col-sm-12 col-12 imgCommentsBox">
@@ -173,7 +173,7 @@ const VinylDetail = () => {
             )}
           </div>
         </section>
-        <section ref={commentsRef}  className="comentsList row">
+        <section   className="comentsList row">
           {comments.length > 0 ? (
             comments.map((comment) => (
               <div key={comment.id} className="commentBox animationUpDown">

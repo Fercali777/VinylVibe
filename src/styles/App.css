@@ -69,9 +69,8 @@ body {
   margin-top: -2vh;
   display: none;
 }
-.boxHeadMov{
+.boxHeadMov {
   width: 100%;
-
 }
 .formImage {
   height: ;
@@ -380,7 +379,7 @@ header button {
 }
 
 .alertMesage {
-  height: 80vh ;
+  height: 80vh;
 }
 
 footer img {
@@ -502,10 +501,9 @@ li {
   animation: downUp 0.3s ease-out forwards;
 }
 
-
 @keyframes upDown {
   0% {
-    transform: translateY(-15px);
+    transform: translateY(-130px);
     opacity: 0;
     visibility: hidden;
   }
@@ -516,12 +514,9 @@ li {
   }
 }
 
-
-
 .animationUpDown {
-  animation: upDown 0.3s ease-out forwards;
+  animation: upDown 0.8s ease-out forwards;
 }
-
 
 /* Grid & Flex----------------------------------------------------------------------*/
 .paddin1 {
@@ -651,7 +646,7 @@ content {
     font-family: "Libre Baskerville", Georgia, "Times New Roman", Times, serif;
     font-weight: 800;
     font-size: 60px;
-    line-height: 68px;
+    line-height: 62px;
     color: #fffaae;
   }
 
@@ -671,18 +666,22 @@ content {
     line-height: 28px;
     color: #fffaae;
   }
+  .paddin1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
   .mainMenu {
-
     margin: 20px 0px 20px 0px;
-}
+  }
   .alertMesage {
-    height: auto ;
+    height: auto;
     margin: 40px 0px 40px 0px;
   }
   .userName {
     margin-right: 0px;
     margin-bottom: 10px;
-}
+  }
   .formSection {
     height: auto;
     text-align: center;
@@ -703,10 +702,10 @@ content {
   }
   .homeText {
     padding: 35px 30px 35px 30px;
-}
-.homeTextUnder {
-  padding: 20px 0px 20px 0px;
-}
+  }
+  .homeTextUnder {
+    padding: 20px 0px 20px 0px;
+  }
   .homeImage {
     display: none;
   }
