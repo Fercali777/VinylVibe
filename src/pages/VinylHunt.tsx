@@ -10,10 +10,10 @@ const VinylHunt = () => {
   const [shouldSearch, setShouldSearch] = useState<boolean>(false);
   const [countries, setCountries] = useState<string[]>([]); 
   const [selectedCountry, setSelectedCountry] = useState<string>("");
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);//for the animation
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);//for the animation by steps 
 
   const location = useLocation();
-  const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP";
+  const token = import.meta.env.VITE_TOKEN;
 
   // animation steps
   useEffect(() => {

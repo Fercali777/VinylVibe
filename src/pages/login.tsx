@@ -32,10 +32,7 @@ function Login() {
             <h2>Login successful! </h2>
             <h4>Your vinyl adventure starts now</h4>
             <GoBackButton/>
-
-            
             </>)
-            
             : 
               (<>
               
@@ -53,7 +50,6 @@ function Login() {
                   value={loginPW}
                   onChange={(e) => setLoginPW(e.target.value)}
                 />
-
                 <button className="generalButton" type="submit">
                   Login!
                 </button>
@@ -78,8 +74,6 @@ function Login() {
               </h4>
             )} */}
 
-            
-          
         </div>
         <img
           className="formImage"

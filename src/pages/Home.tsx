@@ -3,16 +3,14 @@ import { useNavigate } from "react-router";
 import "../styles/Home.css";
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState(""); // Estado para la búsqueda
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-
 
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
-      navigate(`/vinyl-hunt?search=${encodeURIComponent(searchQuery)}`); // Cambiar "/gallery" por "/vinyl-hunt"
+      navigate(`/vinyl-hunt?search=${encodeURIComponent(searchQuery)}`); 
     }
   };
-
 
   return (
     <>
@@ -46,6 +44,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-

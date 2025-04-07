@@ -17,7 +17,7 @@ const VinylDetail = () => {
   const [comments, setComments] = useState<any[]>([]);
   const [newComment, setNewComment] = useState("");
   const { user } = useContext(AuthContext);
-  const commentsRef = useRef<HTMLDivElement>(null); //for the autoscroll
+  const commentsRef = useRef<HTMLDivElement>(null); //Autoscroll
   const token = "qxkbIRypBrNlrgGKjwTdeRqCewNXVtwdyZfCEUAP";
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const VinylDetail = () => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const commentsData = snapshot.docs
         .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((comment: any) => comment.vinylId === id); // Filtrar por vinilo
+        .filter((comment: any) => comment.vinylId === id); 
 
       setComments(commentsData);
     });
@@ -68,9 +68,9 @@ const VinylDetail = () => {
         comment: newComment,
         timestamp: new Date(),
       });
-      setNewComment(""); // Limpiar el input
+      setNewComment(""); // Clean el input
 
-      // Hacer scroll al área de comentarios
+      // Scroll to comments
       setTimeout(() => {
         commentsRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 100);
@@ -129,7 +129,7 @@ const VinylDetail = () => {
           <h2>Groove Talk</h2>
           <h4>Share thoughts from vinyl lovers.</h4>
         </section>
-        <section  className="comentingBox row">
+        <section className="comentingBox row">
           {user ? (
             <>
               <div className="col-md-2 col-sm-12 col-12 imgCommentsBox">
@@ -173,7 +173,7 @@ const VinylDetail = () => {
             )}
           </div>
         </section>
-        <section   className="comentsList row">
+        <section className="comentsList row">
           {comments.length > 0 ? (
             comments.map((comment) => (
               <div key={comment.id} className="commentBox animationUpDown">
@@ -197,5 +197,4 @@ const VinylDetail = () => {
     </>
   );
 };
-
 export default VinylDetail;

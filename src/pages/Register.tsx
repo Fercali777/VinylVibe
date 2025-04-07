@@ -15,7 +15,7 @@ function Register() {
     e.preventDefault();
     try {
       await register(registerEmail, registerPW, registerName);
-      setIsRegistered(true); // Oculta el formulario tras el registro
+      setIsRegistered(true); // Hide register form
     } catch (error) {
       console.error("Registration failed:", error);
     }
@@ -27,11 +27,9 @@ function Register() {
         <div className="fomContentBox">
           {isRegistered ? (
             <>
-            <h2>Create Your Account & Turn Up the Volume</h2>
-            <h4>Your vinyl adventure starts now</h4>
-            <GoBackButton/>
-            
-            
+              <h2>Create Your Account & Turn Up the Volume</h2>
+              <h4>Your vinyl adventure starts now</h4>
+              <GoBackButton />
             </>
           ) : (
             <>
